@@ -1,0 +1,4 @@
+//IBMUSERJ  JOB ('POPUP'),'POPUP',NOTIFY=&SYSUID,CLASS=A,
+//        MSGCLASS=R,REGION=0M
+//*
+//* Jobcard skeleton
