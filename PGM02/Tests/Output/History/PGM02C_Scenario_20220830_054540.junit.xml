@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?totaltestVersion 20.9.2.v20220119-0531_125?>
+<!--Topaz for Total Test 20.9.2.v20220119-0531_125 Aug 30, 2022 5:45:40 AM-->
+<testsuites>
+  <testsuite name="PGM02C_Scenario" errors="0" tests="1" failures="0">
+    <testcase classname="PGM02C_Scenario" name="Unit Test: Test Case: PGM02CCase1 for program: PGM02C" />
+  </testsuite>
+</testsuites>

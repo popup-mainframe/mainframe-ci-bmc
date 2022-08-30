@@ -1,0 +1,2095 @@
+05:47:39.251 INFO      TOPAZ            ***************************************
+05:47:39.251 INFO      TOPAZ            ** Execution from Topaz with options **
+05:47:39.251 INFO      TOPAZ            ***************************************
+05:47:39.251 INFO      TOPAZ            Using repository: false
+05:47:39.251 INFO      TOPAZ            ***************************************
+05:47:39.251 INFO      Engine           Test Scenario execution started
+05:47:39.251 ALL       Engine           Total Test Version: 20.9.2.v20220119-0531_125
+05:47:39.251 INFO      Engine           Using context settings:
+  Engine Version                : 20.9.2.v20220119-0531_125
+  Environment id                : 10.10.1.173:16196
+  Environment type              : Batch
+  Operating system              : ZOS
+  zOS agent version             : NEWEST
+  Server address                : 10.10.1.173
+  Server port                   : 16196
+  Job execution timeout seconds : 600
+  Job info interval seconds     : 3
+  Socket read timeout           : 30
+  Encoding                      : ISO8859-1
+  Codepage                      : 
+  Host user Id                  : IBMUSER
+  Use Repository Server         : false
+05:47:39.251 INFO      Engine           Setting variables from context and context data extensions
+05:47:39.251 INFO      Engine             id: environmentId      value: 10.10.1.173:16196
+05:47:39.251 INFO      Engine             id: environmentType    value: BATCH
+05:47:39.251 INFO      Engine             id: userId             value: IBMUSER
+05:47:39.251 INFO      Engine             id: accountingInfo     value: 
+05:47:39.251 INFO      Unittest         Interpreting Unittest of module: PGM02C testscenario path: PGM02C_Scenario.testscenario
+05:47:39.251 TRACE     Unittest         Initialising Total Test runner...
+05:47:39.267 DEBUG     Unittest         Getting TTTRUNNR loadlib version
+05:47:39.267 TRACE     Unittest         TTTRUNNR PTF level: 20220321-140254
+05:47:39.267 DEBUG     Unittest         Generic JCL skeleton used from environment/connection
+05:47:39.267 INFO      Unittest         Using JCL skeleton to submit JCL
+05:47:39.267 DEBUG     Unittest         Building binary files for test scenario: PGM02C_Scenario.testscenario in project Tests
+05:47:59.034 ALL       Unittest         Raw JCL skeleton:
+//IBMUSERA  JOB (''),'NAME',NOTIFY=&SYSUID,CLASS=A,
+//        MSGCLASS=R,REGION=0M
+//*
+//*** THE JOB CARD MUST INCLUDE A NOTIFY STATEMENT SUCH 
+//*** AS NOTIFY=&SYSUID and also a REGION=0M parameter
+//*
+//********************************************************************
+//* Execute Target Runner
+//********************************************************************
+//RUNNER EXEC PGM=TTTRUNNR
+//*
+//* This is a dynamic JCL skeleton for submitting Total Test that can
+//* be reused for all test cases. 
+//* The first DD statement is automatically setup at execution time 
+//* with the ECC SLCXLOAD dataset that contains the Topaz for Total 
+//* Test TTTRUNNR program.
+//* The second DD statement is automatically setup with the loadlib(s) 
+//* containing the programs to run during the test.
+//* The third DD statement is only required if running the JCL 
+//* from Topaz for Total Test CLI with Code Coverage support.
+//* If testing an LE application it should be changed to the
+//* loadlib containing the COBOL runtime(CEE.SCEERUN), otherwise 
+//* it can be removed.
+//*
+//* The skeleton can be modified as needed
+//*
+//STEPLIB DD DISP=SHR,DSN=SYS1.CPWR.MLCX170.SLCXLOAD
+//        DD DISP=SHR,DSN=ISPW.PLAY.DEV1.LOAD
+//        DD DISP=SHR,DSN=ISPW.PLAY.STG1.LOAD
+//        DD DISP=SHR,DSN=ISPW.PLAY.QA.LOAD
+//        DD DISP=SHR,DSN=ISPW.PLAY.PRD.LOAD
+//*
+//* The following lines will initialize storage to zeroes to avoid 
+//* uninitialized storage assertion miscompares.
+//CEEOPTS  DD  *
+STORAGE(00,00,00)
+/*
+//TRPARM DD *
+*
+*        Optionally set your custom exit program here:
+* 
+EXIT(NONE)
+*
+REPEAT(${runtime.repeat}),STUBS(${runtime.usestubs}),
+DEBUG(${runtime.usedebug})
+/* 
+//BININP DD DSN=${runtime.bininp},DISP=OLD
+//BINREF DD DSN=${runtime.binref},DISP=OLD
+//BINRES DD DSN=${runtime.binres},DISP=OLD
+//*
+//*      Optionally add your custom DD statements
+//*DD1 DD DSN=HLQ.CUSTOM.TEST.LOAD,DISP=SHR
+//SYSPRINT DD SYSOUT=*
+//*
+
+05:47:59.034 ALL       Unittest         Generating JCL from skeleton and Connection properties
+05:47:59.034 ALL       JCLGenerator     Replacing following properties in skeleton:
+  key:lpar_tttrunner_lib  value:SYS1.CPWR.MLCX170.SLCXLOAD
+
+05:47:59.034 ALL       JCLGenerator     Replacing following properties in skeleton:
+  key:accountingInfo      value:
+  key:runtime.binres      value:IBMUSER.TOTALTST.ID859313.BINRES
+  key:TOTALTEST_STUBS     value:ON
+  key:runtime.binref      value:IBMUSER.TOTALTST.ID859313.BINREF
+  key:runtime.usedebug    value:ON
+  key:TOTALTEST_BINREF    value:IBMUSER.TOTALTST.ID859313.BINREF
+  key:userId              value:IBMUSERA
+  key:runtime.repeat      value:0
+  key:runtime.usestubs    value:ON
+  key:TOTALTEST_BININP    value:IBMUSER.TOTALTST.ID859313.BININP
+  key:runtime.bininp      value:IBMUSER.TOTALTST.ID859313.BININP
+  key:TOTALTEST_REPEAT    value:0
+  key:TOTALTEST_BINRES    value:IBMUSER.TOTALTST.ID859313.BINRES
+
+05:47:59.034 TRACE     Unittest         JCL to be submitted:
+//IBMUSERA  JOB (''),'NAME',NOTIFY=&SYSUID,CLASS=A,
+//        MSGCLASS=R,REGION=0M
+//*
+//*** THE JOB CARD MUST INCLUDE A NOTIFY STATEMENT SUCH 
+//*** AS NOTIFY=&SYSUID and also a REGION=0M parameter
+//*
+//********************************************************************
+//* Execute Target Runner
+//********************************************************************
+//RUNNER EXEC PGM=TTTRUNNR
+//*
+//* This is a dynamic JCL skeleton for submitting Total Test that can
+//* be reused for all test cases. 
+//* The first DD statement is automatically setup at execution time 
+//* with the ECC SLCXLOAD dataset that contains the Topaz for Total 
+//* Test TTTRUNNR program.
+//* The second DD statement is automatically setup with the loadlib(s) 
+//* containing the programs to run during the test.
+//* The third DD statement is only required if running the JCL 
+//* from Topaz for Total Test CLI with Code Coverage support.
+//* If testing an LE application it should be changed to the
+//* loadlib containing the COBOL runtime(CEE.SCEERUN), otherwise 
+//* it can be removed.
+//*
+//* The skeleton can be modified as needed
+//*
+//STEPLIB DD DISP=SHR,DSN=SYS1.CPWR.MLCX170.SLCXLOAD
+//        DD DISP=SHR,DSN=ISPW.PLAY.DEV1.LOAD
+//        DD DISP=SHR,DSN=ISPW.PLAY.STG1.LOAD
+//        DD DISP=SHR,DSN=ISPW.PLAY.QA.LOAD
+//        DD DISP=SHR,DSN=ISPW.PLAY.PRD.LOAD
+//*
+//* The following lines will initialize storage to zeroes to avoid 
+//* uninitialized storage assertion miscompares.
+//CEEOPTS  DD  *
+STORAGE(00,00,00)
+/*
+//TRPARM DD *
+*
+*        Optionally set your custom exit program here:
+* 
+EXIT(NONE)
+*
+REPEAT(0),STUBS(ON),
+DEBUG(ON)
+/* 
+//BININP DD DSN=IBMUSER.TOTALTST.ID859313.BININP,DISP=OLD
+//BINREF DD DSN=IBMUSER.TOTALTST.ID859313.BINREF,DISP=OLD
+//BINRES DD DSN=IBMUSER.TOTALTST.ID859313.BINRES,DISP=OLD
+//*
+//*      Optionally add your custom DD statements
+//*DD1 DD DSN=HLQ.CUSTOM.TEST.LOAD,DISP=SHR
+//SYSPRINT DD SYSOUT=*
+//*
+
+05:47:59.034 TRACE     Unittest         Submitting job...
+05:47:59.034 INFO      Popup 173        Sending Job execution request to Host 
+05:47:59.034 TRACE     HCIClient        Creating HciHostServices instance with Default Codepage :1047
+05:47:59.034 TRACE     HCIClient        Connecting outside workbench to HCI
+05:47:59.034 ALL       HCIClient        ConnectionToken=HOSTSERVICES-MAINFRAME_IBMUSER_DESKTOP-MLMQE9H_T1661852859313
+05:47:59.034 DEBUG     Popup 173        Executing Job through HCI
+05:47:59.644 DEBUG     Popup 173        Job submitted with jobId: JOB03643 jobName:IBMUSERA
+05:48:04.675 INFO      Popup 173        Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job IBMUSERA(JOB03643) ended with return code: 0000
+  Job name       : IBMUSERA
+  Job id         : JOB03643
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+05:48:04.675 TRACE     Popup 173        Getting job information
+05:48:04.690 TRACE     Popup 173        Job contains following spool files:
+  dd:JESMSGLG   stepName:JES2       procName:
+  dd:JESJCL     stepName:JES2       procName:
+  dd:JESYSMSG   stepName:JES2       procName:
+  dd:SYSPRINT   stepName:RUNNER     procName:
+  dd:SYSOUT     stepName:RUNNER     procName:
+  dd:TTOUT      stepName:RUNNER     procName:
+
+05:48:04.690 ALL       Popup 173        Getting the spool content...
+05:48:04.721 ALL       Popup 173        Spool content dd:JESMSGLG
+1                       J E S 2  J O B  L O G  --  S Y S T E M  S 0 W 1  --  N O D E  S 0 W 1
+0
+ 03.48.27 JOB03643 ---- TUESDAY,   30 AUG 2022 ----
+ 03.48.27 JOB03643  IRR010I  USERID IBMUSER  IS ASSIGNED TO THIS JOB.
+ 03.48.27 JOB03643  ICH70001I IBMUSER  LAST ACCESS AT 03:48:07 ON TUESDAY, AUGUST 30, 2022
+ 03.48.27 JOB03643  $HASP373 IBMUSERA STARTED - INIT 1    - CLASS A        - SYS S0W1
+ 03.48.27 JOB03643  IEF403I IBMUSERA - STARTED - TIME=03.48.27
+ 03.48.29 JOB03643  -                                      -----TIMINGS (MINS.)------                          -----PAGING COUNTS----
+ 03.48.29 JOB03643  -STEPNAME PROCSTEP    RC   EXCP   CONN       TCB       SRB  CLOCK          SERV  WORKLOAD  PAGE  SWAP   VIO SWAPS
+ 03.48.29 JOB03643  -RUNNER               00   1529      0       .00       .00     .0            10  BATCH        0     0     0     0
+ 03.48.29 JOB03643  IEF404I IBMUSERA - ENDED - TIME=03.48.29
+ 03.48.29 JOB03643  -IBMUSERA ENDED.  NAME-NAME                 TOTAL TCB CPU TIME=      .00 TOTAL ELAPSED TIME=    .0
+ 03.48.29 JOB03643  $HASP395 IBMUSERA ENDED - RC=0000
+0------ JES2 JOB STATISTICS ------
+-  30 AUG 2022 JOB EXECUTION DATE
+-           54 CARDS READ
+-        1,890 SYSOUT PRINT RECORDS
+-            0 SYSOUT PUNCH RECORDS
+-          116 SYSOUT SPOOL KBYTES
+-         0.01 MINUTES EXECUTION TIME
+
+05:48:04.755 ALL       Popup 173        Spool content dd:JESJCL
+        1 //IBMUSERA  JOB (''),'NAME',NOTIFY=&SYSUID,CLASS=A,                     JOB03643
+          //        MSGCLASS=R,REGION=0M
+          //*
+          //*** THE JOB CARD MUST INCLUDE A NOTIFY STATEMENT SUCH
+          //*** AS NOTIFY=&SYSUID and also a REGION=0M parameter
+          //*
+          //********************************************************************
+          //* Execute Target Runner
+          //********************************************************************
+          IEFC653I SUBSTITUTION JCL - (''),'NAME',NOTIFY=IBMUSER,CLASS=A,MSGCLASS=R,REGION=0M
+        2 //RUNNER EXEC PGM=TTTRUNNR
+          //*
+          //* This is a dynamic JCL skeleton for submitting Total Test that can
+          //* be reused for all test cases.
+          //* The first DD statement is automatically setup at execution time
+          //* with the ECC SLCXLOAD dataset that contains the Topaz for Total
+          //* Test TTTRUNNR program.
+          //* The second DD statement is automatically setup with the loadlib(s)
+          //* containing the programs to run during the test.
+          //* The third DD statement is only required if running the JCL
+          //* from Topaz for Total Test CLI with Code Coverage support.
+          //* If testing an LE application it should be changed to the
+          //* loadlib containing the COBOL runtime(CEE.SCEERUN), otherwise
+          //* it can be removed.
+          //*
+          //* The skeleton can be modified as needed
+          //*
+        3 //STEPLIB DD DISP=SHR,DSN=SYS1.CPWR.MLCX170.SLCXLOAD
+        4 //        DD DISP=SHR,DSN=ISPW.PLAY.DEV1.LOAD
+        5 //        DD DISP=SHR,DSN=ISPW.PLAY.STG1.LOAD
+        6 //        DD DISP=SHR,DSN=ISPW.PLAY.QA.LOAD
+        7 //        DD DISP=SHR,DSN=ISPW.PLAY.PRD.LOAD
+          //*
+          //* The following lines will initialize storage to zeroes to avoid
+          //* uninitialized storage assertion miscompares.
+        8 //CEEOPTS  DD  *
+        9 //TRPARM DD *
+       10 //BININP DD DSN=IBMUSER.TOTALTST.ID859313.BININP,DISP=OLD
+       11 //BINREF DD DSN=IBMUSER.TOTALTST.ID859313.BINREF,DISP=OLD
+       12 //BINRES DD DSN=IBMUSER.TOTALTST.ID859313.BINRES,DISP=OLD
+          //*
+          //*      Optionally add your custom DD statements
+          //*DD1 DD DSN=HLQ.CUSTOM.TEST.LOAD,DISP=SHR
+       13 //SYSPRINT DD SYSOUT=*
+          //*
+
+05:48:04.800 ALL       Popup 173        Spool content dd:JESYSMSG
+ ICH70001I IBMUSER  LAST ACCESS AT 03:48:07 ON TUESDAY, AUGUST 30, 2022
+ IEFA111I IBMUSERA IS USING THE FOLLOWING JOB RELATED SETTINGS:
+          SWA=ABOVE,TIOT SIZE=32K,DSENQSHR=DISALLOW,GDGBIAS=JOB
+ IEF236I ALLOC. FOR IBMUSERA RUNNER
+ IGD103I SMS ALLOCATED TO DDNAME STEPLIB
+ IGD103I SMS ALLOCATED TO DDNAME
+ IGD103I SMS ALLOCATED TO DDNAME
+ IGD103I SMS ALLOCATED TO DDNAME
+ IGD103I SMS ALLOCATED TO DDNAME
+ IEF237I JES2 ALLOCATED TO CEEOPTS
+ IEF237I JES2 ALLOCATED TO TRPARM
+ IGD103I SMS ALLOCATED TO DDNAME BININP
+ IGD103I SMS ALLOCATED TO DDNAME BINREF
+ IGD103I SMS ALLOCATED TO DDNAME BINRES
+ IEF237I JES2 ALLOCATED TO SYSPRINT
+ IEF237I JES2 ALLOCATED TO SYSOUT
+ IEF237I JES2 ALLOCATED TO TTOUT
+ IEF237I DMY  ALLOCATED TO TTTDUMMY
+ IEF285I   IBMUSER.IBMUSERA.JOB03643.D0000104.?         SYSOUT
+ IEF142I IBMUSERA RUNNER - STEP WAS EXECUTED - COND CODE 0000
+ IGD104I SYS1.CPWR.MLCX170.SLCXLOAD                   RETAINED,  DDNAME=STEPLIB
+ IGD104I ISPW.PLAY.DEV1.LOAD                          RETAINED,  DDNAME=
+ IGD104I ISPW.PLAY.STG1.LOAD                          RETAINED,  DDNAME=
+ IGD104I ISPW.PLAY.QA.LOAD                            RETAINED,  DDNAME=
+ IGD104I ISPW.PLAY.PRD.LOAD                           RETAINED,  DDNAME=
+ IEF285I   IBMUSER.IBMUSERA.JOB03643.D0000101.?         SYSIN
+ IEF285I   IBMUSER.IBMUSERA.JOB03643.D0000102.?         SYSIN
+ IGD104I IBMUSER.TOTALTST.ID859313.BININP             RETAINED,  DDNAME=BININP
+ IGD104I IBMUSER.TOTALTST.ID859313.BINREF             RETAINED,  DDNAME=BINREF
+ IGD104I IBMUSER.TOTALTST.ID859313.BINRES             RETAINED,  DDNAME=BINRES
+ IEF285I   IBMUSER.IBMUSERA.JOB03643.D0000103.?         SYSOUT
+ IEF285I   IBMUSER.IBMUSERA.JOB03643.D0000105.?         SYSOUT
+ IEF373I STEP/RUNNER  /START 2022242.0348
+ IEF032I STEP/RUNNER  /STOP  2022242.0348
+         CPU:     0 HR  00 MIN  00.59 SEC    SRB:     0 HR  00 MIN  00.01 SEC
+         VIRT:   248K  SYS:   260K  EXT:    27588K  SYS:    10992K
+         ATB- REAL:                  1184K  SLOTS:                     0K
+              VIRT- ALLOC:      16M SHRD:       0M
+ IEF375I  JOB/IBMUSERA/START 2022242.0348
+ IEF033I  JOB/IBMUSERA/STOP  2022242.0348
+         CPU:     0 HR  00 MIN  00.59 SEC    SRB:     0 HR  00 MIN  00.01 SEC
+
+05:48:04.828 ALL       Popup 173        Spool content dd:SYSPRINT
+ ========
+0totaltest zTargetRunner TTTENVC4 v170200  .2020051310221180-0400 on 2022-08-30 03:48.28
+ *
+ *        Optionally set your custom exit program here:
+ *
+ EXIT(NONE)
+ *
+ REPEAT(0),STUBS(ON),
+ DEBUG(ON)
+0========
+0TTTENVC4 >> w-date:  220830
+ TTTENVC4 >> w-dateYYYYMMDD:  20220830
+ TTTENVC4 >> w-day:  22242
+ TTTENVC4 >> w-dayYYYYDDD:  2022242
+ TTTENVC4 >> w-dayOfWeek:  2
+ TTTENVC4 >> w-time:  03482817
+ TTTENVC4 >> w-currentDate:  2022083003482817-0600
+ ========
+0totaltest zTargetRunner TTTENVC5 v170200  .2020051310215600-0400 on 2022-08-30 03:48.28
+ *
+ *        Optionally set your custom exit program here:
+ *
+ EXIT(NONE)
+ *
+ REPEAT(0),STUBS(ON),
+ DEBUG(ON)
+0========
+0TTTENVC5 >> w-date:  220830
+ TTTENVC5 >> w-dateYYYYMMDD:  20220830
+ TTTENVC5 >> w-day:  22242
+ TTTENVC5 >> w-dayYYYYDDD:  2022242
+ TTTENVC5 >> w-dayOfWeek:  2
+ TTTENVC5 >> w-time:  03482822
+ TTTENVC5 >> w-currentDate:  2022083003482822-0600
+
+05:48:04.989 ALL       Popup 173        Spool content dd:SYSOUT
+ entered liccheck
+  2022-08-30 03:48:28 TT>> INITMTBL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 TT>> INITMTBL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> STG1INIT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 TT>> STG1INIT >>>TR>>>EXIT RC = 00000000
+ STTR043I Initializing simulation environment for: COBOL V4
+ STTR043I Initializing simulation environment for: COBOL V5
+ STTR011I totaltest zTargetRunner v170200 2022032114025711-0400 on 2022-08-30 03:48.28����������������
+ STTR012I Options set to EXIT(),STUBS(ON),ARGTYPE(��������),DEBUG(ON)
+ *dbg ResultRecord Type=VERSION  SeqNo=0000000000 BinaryLength=0000000078 HeaderLength=0000000024 DataLength=0000000078
+ *dbg ResultRecord Header=VERSION V2���������+���+
+ *dbg ResultRecord Data=totaltest zTargetRunner v170200  .2022032114025711-0400 on 2022-08-30 03:48.28
+ *dbg ResultRecord Type=INFO     SeqNo=0000000000 BinaryLength=0000000232 HeaderLength=0000000024 DataLength=0000000232
+ *dbg ResultRecord Header=INFO    �����������Y���Y
+ *dbg ResultRecord Data=Initial VS --- Max24:  9,412,608  Used24:    163,840  Max31: 1,616,904,192  Used31:    25,440,256
+   Region:             0 ---  SYSNAME=S0W1,LPAR=IBMSYS1,CPU=D301114B1090,JOBNAME=IBMUSERA,JOBID=JOB03643
+ Initial VS --- Max24:  9,412,608  Used24:    163,840  Max31: 1,616,904,192  Used31:    25,440,256  Region:             0
+  ---
+ *dbg InputRecord Type=VERSION  SeqNo=0000000000 BinaryLength=0000000074 HeaderLength=0000000024 DataLength=0000000074
+ *dbg InputRecord Header=VERSION V2���������¢���¢
+ *dbg InputRecord Data=TotalTest zBinaryBuilder v20.9.2.v20220119-0531_125 on 2022-08-30 05:47:39
+ *dbg ResultRecord Type=VERSION  SeqNo=0000000000 BinaryLength=0000000074 HeaderLength=0000000024 DataLength=0000000074
+ *dbg ResultRecord Header=VERSION V2���������¢���¢
+ *dbg ResultRecord Data=TotalTest zBinaryBuilder v20.9.2.v20220119-0531_125 on 2022-08-30 05:47:39
+ Topaz for Total Test Binary Builder: 20.9.2
+ *dbg InputRecord Type=SUITE    SeqNo=0000000000 BinaryLength=0000000015 HeaderLength=0000000024 DataLength=0000000015
+ *dbg InputRecord Header=SUITE   V1��������������
+ *dbg InputRecord Data=PGM02C_Scenario
+ *dbg InputRecord Type=SCENARIO SeqNo=0000000000 BinaryLength=0000000015 HeaderLength=0000000024 DataLength=0000000015
+ *dbg InputRecord Header=SCENARIOV1��������������
+ *dbg InputRecord Data=PGM02C_Scenario
+ *dbg InputRecord Type=CASE     SeqNo=0000000000 BinaryLength=0000000011 HeaderLength=0000000024 DataLength=0000000011
+ *dbg InputRecord Header=CASE    V1��������������
+ *dbg InputRecord Data=PGM02CCase1
+ *dbg InputRecord Type=TARGET   SeqNo=0000000000 BinaryLength=0000000077 HeaderLength=0000000024 DataLength=0000000077
+ *dbg InputRecord Header=TARGET  V3���������(���(
+ *dbg InputRecord Data=PGM02C  PGM02C  PGM02C#CNISPW.PLAY.DEV1.LOAD                         PGM02C
+ Test Case LOAD/PDSE: ISPW.PLAY.DEV1.LOAD
+ *dbg InputRecord Type=STUB     SeqNo=0000000001 BinaryLength=0000000009 HeaderLength=0000000024 DataLength=0000000009
+ *dbg InputRecord Header=STUB    V1��������������
+ *dbg InputRecord Data=PGM02D  Y
+ *dbg InputRecord Type=RETVAL   SeqNo=0000000000 BinaryLength=0000000008 HeaderLength=0000000024 DataLength=0000000008
+ *dbg InputRecord Header=RETVAL  V1��������������
+ *dbg InputRecord Data=��������
+ *dbg InputRecord Type=SUBPARGB SeqNo=0000000001 BinaryLength=0000000013 HeaderLength=0000000024 DataLength=0000000013
+ *dbg InputRecord Header=SUBPARGBV2��������������
+ *dbg InputRecord Data=��KøBA1218030
+ *dbg InputRecord Type=SUBPARGA SeqNo=0000000001 BinaryLength=0000000013 HeaderLength=0000000024 DataLength=0000000013
+ *dbg InputRecord Header=SUBPARGAV2��������������
+ *dbg InputRecord Data=��KøBA1218030
+ *dbg InputRecord Type=STUBACPT SeqNo=0000000001 BinaryLength=0000000009 HeaderLength=0000000024 DataLength=0000000009
+ *dbg InputRecord Header=STUBACPTV1��������������
+ *dbg InputRecord Data=SYSIN   N
+ *dbg InputRecord Type=ARGVAL   SeqNo=0000000001 BinaryLength=0000000002 HeaderLength=0000000024 DataLength=0000000002
+ *dbg InputRecord Header=ARGVAL  V1��������������
+ *dbg InputRecord Data=12
+ *dbg InputRecord Type=ARGVAL   SeqNo=0000000001 BinaryLength=0000000002 HeaderLength=0000000024 DataLength=0000000002
+ *dbg InputRecord Header=ARGVAL  V1��������������
+ *dbg InputRecord Data=18
+ *dbg InputRecord Type=ARGVAL   SeqNo=0000000001 BinaryLength=0000000003 HeaderLength=0000000024 DataLength=0000000003
+ *dbg InputRecord Header=ARGVAL  V1��������������
+ *dbg InputRecord Data=030
+ *dbg InputRecord Type=CASE     SeqNo=0000000001 BinaryLength=0000000011 HeaderLength=0000000024 DataLength=0000000011
+ *dbg InputRecord Header=CASE    V1��������������
+ *dbg InputRecord Data=PGM02CCase2
+ *dbg Detected end of test case
+ *dbg Current scenario:
+ 
+ *dbg    Next scenario: PGM02C_Scenario
+ 
+ STTR013I Processing test suite PGM02C_Scenario
+ STTR014I Processing test scenario PGM02C_Scenario
+ *dbg before runTestCase
+ *dbg argValAddr(01)=0000000000
+ *dbg argValAddr(02)=0000000000
+ *dbg argValAddr(03)=0000000000
+ *dbg argValAddr(04)=0000000000
+ *dbg argValAddr(05)=0000000000
+ STTR028I Processing test case PGM02CCase1
+ *dbg after beforeTestCase
+ *dbg argValAddr(01)=0000000000
+ *dbg argValAddr(02)=0000000000
+ *dbg argValAddr(03)=0000000000
+ *dbg argValAddr(04)=0000000000
+ *dbg argValAddr(05)=0000000000
+ STTR006I Executing target PGM02C#C����������������������������������������������������
+ *dbg before execTestCase
+ *dbg l-ArgListAddr(01)=0000000000
+ *dbg l-ArgListAddr(02)=0000000000
+ *dbg l-ArgListAddr(03)=0000000000
+ *dbg l-ArgListAddr(04)=0000000000
+ *dbg l-ArgListAddr(05)=0000000000
+ *dbg Calling Target Module: PGM02C  , CSECT: PGM02C���������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ��������������������������������������������������������������������������������������������������������������, Entry: P
+ GM02C#C�����������������������������������������������������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ����������������������������������������������������������������
+ Btarget VS --- Max24:  9,412,608  Used24:    172,032  Max31: 1,616,904,192  Used31:    27,045,888  Region:             0
+  ---
+ SUM OF 12 AND 18 IS: 030
+ Atarget VS --- Max24:  9,412,608  Used24:    172,032  Max31: 1,616,904,192  Used31:    27,049,984  Region:             0
+  ---
+ >>> Return from target via SIM20
+ >>> Target RC: 07777
+ *dbg saving result data for PGM02C   numArgVal=0000000000
+ *dbg ResultRecord Type=TARGET   SeqNo=0000000000 BinaryLength=0000000024 HeaderLength=0000000024 DataLength=0000000024
+ *dbg ResultRecord Header=TARGET  V2��������������
+ *dbg ResultRecord Data=PGM02C  08/30/2203:42:36
+ *dbg ResultRecord Type=RETVAL   SeqNo=0000000000 BinaryLength=0000000008 HeaderLength=0000000024 DataLength=0000000008
+ *dbg ResultRecord Header=RETVAL  ����������������
+ *dbg ResultRecord Data=�������/
+ *dbg ResultRecord Type=SUBASSRT SeqNo=0000000001 BinaryLength=0000000057 HeaderLength=0000000024 DataLength=0000000057
+ *dbg ResultRecord Header=SUBASSRTV1��������������
+ *dbg ResultRecord Data=��������������������DAPGM02D����������������������1218030
+ Aresult VS --- Max24:  9,412,608  Used24:    172,032  Max31: 1,616,904,192  Used31:    27,049,984  Region:             0
+  ---
+ *TermTC VS --- Max24:  9,412,608  Used24:    163,840  Max31: 1,616,904,192  Used31:    26,324,992  Region:             0
+  ---
+ *dbg InputRecord Type=TARGET   SeqNo=0000000000 BinaryLength=0000000077 HeaderLength=0000000024 DataLength=0000000077
+ *dbg InputRecord Header=TARGET  V3���������(���(
+ *dbg InputRecord Data=PGM02C  PGM02C  PGM02C#CNISPW.PLAY.DEV1.LOAD                         PGM02C
+ Test Case LOAD/PDSE: ISPW.PLAY.DEV1.LOAD
+ *dbg InputRecord Type=STUB     SeqNo=0000000001 BinaryLength=0000000009 HeaderLength=0000000024 DataLength=0000000009
+ *dbg InputRecord Header=STUB    V1��������������
+ *dbg InputRecord Data=PGM02D  Y
+ *dbg InputRecord Type=RETVAL   SeqNo=0000000000 BinaryLength=0000000008 HeaderLength=0000000024 DataLength=0000000008
+ *dbg InputRecord Header=RETVAL  V1��������������
+ *dbg InputRecord Data=��������
+ *dbg InputRecord Type=SUBPARGB SeqNo=0000000001 BinaryLength=0000000013 HeaderLength=0000000024 DataLength=0000000013
+ *dbg InputRecord Header=SUBPARGBV2��������������
+ *dbg InputRecord Data=��KøBA2652078
+ *dbg InputRecord Type=SUBPARGA SeqNo=0000000001 BinaryLength=0000000013 HeaderLength=0000000024 DataLength=0000000013
+ *dbg InputRecord Header=SUBPARGAV2��������������
+ *dbg InputRecord Data=��KøBA2652078
+ *dbg InputRecord Type=STUBACPT SeqNo=0000000001 BinaryLength=0000000009 HeaderLength=0000000024 DataLength=0000000009
+ *dbg InputRecord Header=STUBACPTV1��������������
+ *dbg InputRecord Data=SYSIN   N
+ *dbg InputRecord Type=ARGVAL   SeqNo=0000000001 BinaryLength=0000000002 HeaderLength=0000000024 DataLength=0000000002
+ *dbg InputRecord Header=ARGVAL  V1��������������
+ *dbg InputRecord Data=26
+ *dbg InputRecord Type=ARGVAL   SeqNo=0000000001 BinaryLength=0000000002 HeaderLength=0000000024 DataLength=0000000002
+ *dbg InputRecord Header=ARGVAL  V1��������������
+ *dbg InputRecord Data=52
+ *dbg InputRecord Type=ARGVAL   SeqNo=0000000001 BinaryLength=0000000003 HeaderLength=0000000024 DataLength=0000000003
+ *dbg InputRecord Header=ARGVAL  V1��������������
+ *dbg InputRecord Data=078
+ *dbg Detected end of test case
+ *dbg Current scenario: PGM02C_Scenario
+ 
+ *dbg    Next scenario: PGM02C_Scenario
+ 
+ *dbg before runTestCase
+ *dbg argValAddr(01)=0000000000
+ *dbg argValAddr(02)=0000000000
+ *dbg argValAddr(03)=0000000000
+ *dbg argValAddr(04)=0000000000
+ *dbg argValAddr(05)=0000000000
+ STTR028I Processing test case PGM02CCase2
+ *dbg after beforeTestCase
+ *dbg argValAddr(01)=0000000000
+ *dbg argValAddr(02)=0000000000
+ *dbg argValAddr(03)=0000000000
+ *dbg argValAddr(04)=0000000000
+ *dbg argValAddr(05)=0000000000
+ STTR006I Executing target PGM02C#C����������������������������������������������������
+ *dbg before execTestCase
+ *dbg l-ArgListAddr(01)=0000000000
+ *dbg l-ArgListAddr(02)=0000000000
+ *dbg l-ArgListAddr(03)=0000000000
+ *dbg l-ArgListAddr(04)=0000000000
+ *dbg l-ArgListAddr(05)=0000000000
+ *dbg Calling Target Module: PGM02C  , CSECT: PGM02C���������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ��������������������������������������������������������������������������������������������������������������, Entry: P
+ GM02C#C�����������������������������������������������������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ������������������������������������������������������������������������������������������������������������������������
+ ����������������������������������������������������������������
+ Btarget VS --- Max24:  9,412,608  Used24:    172,032  Max31: 1,616,904,192  Used31:    27,414,528  Region:             0
+  ---
+ SUM OF 26 AND 52 IS: 078
+ Atarget VS --- Max24:  9,412,608  Used24:    172,032  Max31: 1,616,904,192  Used31:    27,414,528  Region:             0
+  ---
+ >>> Return from target via SIM20
+ >>> Target RC: 07777
+ *dbg saving result data for PGM02C   numArgVal=0000000000
+ *dbg ResultRecord Type=TARGET   SeqNo=0000000000 BinaryLength=0000000024 HeaderLength=0000000024 DataLength=0000000024
+ *dbg ResultRecord Header=TARGET  V2��������������
+ *dbg ResultRecord Data=PGM02C  08/30/2203:42:36
+ *dbg ResultRecord Type=RETVAL   SeqNo=0000000000 BinaryLength=0000000008 HeaderLength=0000000024 DataLength=0000000008
+ *dbg ResultRecord Header=RETVAL  ����������������
+ *dbg ResultRecord Data=�������/
+ *dbg ResultRecord Type=SUBASSRT SeqNo=0000000001 BinaryLength=0000000057 HeaderLength=0000000024 DataLength=0000000057
+ *dbg ResultRecord Header=SUBASSRTV1��������������
+ *dbg ResultRecord Data=��������������������DAPGM02D����������������������2652078
+ Aresult VS --- Max24:  9,412,608  Used24:    172,032  Max31: 1,616,904,192  Used31:    27,414,528  Region:             0
+  ---
+ *TermTC VS --- Max24:  9,412,608  Used24:    163,840  Max31: 1,616,904,192  Used31:    26,689,536  Region:             0
+  ---
+ STTR008I All targets successfully executed
+ *dbg Exiting with RC=00000
+
+05:48:05.222 ALL       Popup 173        Spool content dd:TTOUT
+  2022-08-30 03:48:28 TT>> INITCOBL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 TT>> INITCOBL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> TTT@INIT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> STG1BINB >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 TT>> STG1BINB >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> TTTINF00 >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIMTINIT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1INIT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1INIT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> OBJ0CRCL >>>TR>>>ENTRY --->
+ 
+  2022-08-30 03:48:28 ST>> OBJ0CRCL CREATE
+ +CREATE                              Length:00000100
+ 1FB21F00 000000  A7F4004E 53000000 1FB21F9C E3E3E340  *x4.+........TTT *
+01FB21F10 000010  404040C3 E2C5C3E3 40404040 4040E37C  *   CSECT      T@*
+01FB21F20 000020  E3C1D9C7 C5E340E5 60F0F040 D960F1F7  *TARGET V-00 R-17*
+01FB21F30 000030  F0F2F0F0 40F1F4C4 C5C3F2F1 40D7E3C6  *0200 14DEC21 PTF*
+01FB21F40 000040  40F2F3F9 F5F9F600 0040F1F0 4BF2F400  * 239596.. 10.24.*
+01FB21F50 000050  00000000 00000000 404DC35D 40C3D6D7  *........ (C) COP*
+01FB21F60 000060  E8D9C9C7 C8E340F2 F0F1F76B 40F2F0F2  *YRIGHT 2017, 202*
+01FB21F70 000070  F140C3D6 D4D7E4E6 C1D9C540 C3D6D9D7  *1 COMPUWARE CORP*
+01FB21F80 000080  D6D9C1E3 C9D6D540 40404040 40404040  *ORATION         *
+01FB21F90 000090  40404040 40404040 40400000 0000003C  *          ......*
+01FB21FA0 0000A0  00000041 1FB29D40 1FB29DA8 00000000  *....... ...y....*
+01FB21FB0 0000B0  90ECD00C 1821C0C0 0000036D 5800C030  *..}...{{..._..{.*
+01FB21FC0 0000C0  58F0C034 58E00010 58EE0304 58EE00A0  *.0{..\..........*
+01FB21FD0 0000D0  B218E000 12FFA774 033E1211 A784033B  *..\...x.....xd..*
+01FB21FE0 0000E0  18E11BFF 18014110 00E80E0E 50E0D008  *.........Y..&\}.*
+01FB21FF0 0000F0  50D0E004 18DE5810 D004D203 D0481048  *&}\.....}.K.}...*
+0 2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> CL_CREATOR >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> CL_CREATOR >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> OBJ0CRCL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> SIMTINIT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM2INIT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S2>> STG1INIT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S2>> STG1INIT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S2>> SIM2INIT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> TTTRUN10 >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 TT>> TTTRUN10 @EP#1 -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 TT>> TTTRUN10 @EP#1 2125A048: +0000  47F0F04E 00C3C5C5 00000000 00000014 47F0F001 14CEC000 2125A080 00000000
+  2022-08-30 03:48:28 TT>> TTTRUN10 @EP#1 2125A068: +0020  00000000 00000000 000E6D6D 86846D7C D7C7D4F0 F2C34040 0F000001 21258808
+  2022-08-30 03:48:28 TT>> TTTRUN10 @EP#1 2125A088: +0040  00000000 00000000 A1257000 00000DF0 180F58FF 002007FF A1257000 1FFEDCB0
+  2022-08-30 03:48:28 TT>> TTTRUN10 @EP#1 2125A0A8: +0060  1FDE74E8 FFFFFFFF 00000000 2125A098 9FCF49FC 00110301 00104001 00000000
+  2022-08-30 03:48:28 TT>> TTTRUN10 @EP#1 2125A0C8: +0080  20203290 00000000 00000000 202032C4 00000000 00000000 C5D5C4D4 C2D3D260
+  2022-08-30 03:48:28 TT>> TTTRUN10 @EP#1 2125A0E8: +00A0  00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+  2022-08-30 03:48:28 TT>> TTTRUN10 @EP#4 -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 TT>> TTTRUN10 @EP#4 21257000: +0000  47F0F014 01C3C5C5 000001B8 000006F0 47F0F001 90ECD00C 41A0F024 98EFF034
+  2022-08-30 03:48:28 TT>> TTTRUN10 @EP#4 21257020: +0020  47F0F020 21257000 0000009F 21257894 21257730 2125705C 21258300 21257024
+  2022-08-30 03:48:28 TT>> TTTRUN10 @LP#temp -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 TT>> TTTRUN10 @LP#temp 2125B000: +0000  47F0F014 01C3C5C5 000001B8 000006F0 47F0F001 90ECD00C 41A0F024 98EFF034
+  2022-08-30 03:48:28 TT>> TTTRUN10 @LP#temp 2125B020: +0020  47F0F020 2125B000 0000009F 2125B894 2125B730 2125B05C 2125C300 2125B024
+  2022-08-30 03:48:28 TT>> TTTRUN10 @LP#real -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 TT>> TTTRUN10 @LP#real 21257000: +0000  47F0F014 01C3C5C5 000001B8 000006F0 47F0F001 90ECD00C 41A0F024 98EFF034
+  2022-08-30 03:48:28 TT>> TTTRUN10 @LP#real 21257020: +0020  47F0F020 21257000 0000009F 21257894 21257730 2125705C 21258300 21257024
+ ---BNDTARGT---entry
+ --->>>modName = PGM02C  , epName = PGM02C
+ ---openW_includeName---entry
+ --->>>moduleName = PGM02C
+  openW: rc = 0, rs = <0X00000000>.
+  includeName: rc = 0, rs = <0X00000000>.
+ ---openW_includeName---exit
+  getE: rc, count = 3, rs = <0X83000800>.
+ ---closeW---entry
+  closeW: rc = 0, rs = <0X00000000>
+ ---closeW---exit
+ ---BNDTARGT---exit
+  2022-08-30 03:48:28 TT>> TTTRUN10 BNDTARGT RC = X'00000000', OFFSET = X'00000000'
+  2022-08-30 03:48:28 TT>> TTTRUN10 @CSECT -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 TT>> TTTRUN10 @CSECT 21257000: +0000  47F0F014 01C3C5C5 000001B8 000006F0 47F0F001 90ECD00C 41A0F024 98EFF034
+  2022-08-30 03:48:28 TT>> TTTRUN10 @CSECT 21257020: +0020  47F0F020 21257000 0000009F 21257894 21257730 2125705C 21258300 21257024
+ ---BNDTARGT---entry
+ --->>>modName = PGM02C  , epName = PGM02C#C
+ ---openW_includeName---entry
+ --->>>moduleName = PGM02C
+  openW: rc = 0, rs = <0X00000000>.
+  includeName: rc = 0, rs = <0X00000000>.
+ ---openW_includeName---exit
+  getE: rc, count = 1, rs = <0X83000800>.
+ ---closeW---entry
+  closeW: rc = 0, rs = <0X00000000>
+ ---closeW---exit
+ ---BNDTARGT---exit
+  2022-08-30 03:48:28 TT>> TTTRUN10 BNDALTEP RC = X'00000000', OFFSET = X'00000000'
+  2022-08-30 03:48:28 TT>> TTTRUN10 @ALT_EP -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 TT>> TTTRUN10 @ALT_EP 21257000: +0000  47F0F014 01C3C5C5 000001B8 000006F0 47F0F001 90ECD00C 41A0F024 98EFF034
+  2022-08-30 03:48:28 TT>> TTTRUN10 @ALT_EP 21257020: +0020  47F0F020 21257000 0000009F 21257894 21257730 2125705C 21258300 21257024
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>EP -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>EP 21257000: +0000  47F0F014 01C3C5C5 000001B8 000006F0 47F0F001 90ECD00C 41A0F024 98EFF034
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>EP 21257020: +0020  47F0F020 21257000 0000009F 21257894 21257730 2125705C 21258300 21257024
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>EP 21257040: +0040  000008AC 21257480 00000000 58F0C31C 184E05EF 00000000 A7F40009 18EF4100
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>EP 21257060: +0060  E1B85500 C314A724 FFF35000 E04CC001 00110301 5000E000 50D0E004 18DE4100
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>EP 21257080: +0080  D1585000 D074E54C D0700000 5060D060 5070D068 EB1FD08C 002650C0 D080C030
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>EP 212570A0: +00A0  00000279 5800C1F4 5000D0E0 5810C1F4 58203010 41821000 5080D0DC 4110D158
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>EP 212570C0: +00C0  D7431000 1000E54C D1580007 4100800C 5000D17C 9181805C A7140018 4100800C
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>EP 212570E0: +00E0  5000D0F0 4100D158 5000D0F4 4110D0F0 58F03018 58C0D080 0DEF
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10XL TT_XLS_KEY_NAME: PGM02C  , DATE: 08/30/22, TIME: 03:42:36, CT_VER: 06, F0F6
+ ---ESSCHECK---entry
+ --->>>modName = PGM02C  , csectName = PGM02C
+ ---openW_includeName---entry
+ --->>>moduleName = PGM02C
+  openW: rc = 0, rs = <0X00000000>.
+  includeName: rc = 0, rs = <0X00000000>.
+ ---openW_includeName---exit
+ SLSIDRF2: a0
+ ---closeW---entry
+  closeW: rc = 0, rs = <0X00000000>
+ ---closeW---exit
+ ---ESSCHECK---exit
+  2022-08-30 03:48:28 TT>> XLSINIT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 TT>> XLSINIT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> TTTXLS02 >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 TT>> TTTXLS02 >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> XLSOPEN >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 TT>> XLSOPEN XO_ESS XLS_MODULE_NAME: PGM02C  , XLS_KEY_NAME: PGM02C
+  2022-08-30 03:48:28 TT>> XLSOPEN XO_ES2 DATE: 08/30/22, TIME: 03:42:36
+  2022-08-30 03:48:28 TT>> XLSOPEN >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>TT -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>TT 201F3D68: +0000  E3E36E6E 201F3D68 C3000000 201F3D70 201F3D70 00000000 201F4000 00000000
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>TT 201F3D88: +0020  F1000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>TT 201F3DA8: +0040  00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>TT 201F3DC8: +0060  00000000 00000000 00000000 201F3158 00000048 201F32C8 00000020 00000000
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>TT 201F3DE8: +0080  00000000 A12C0AA0 201F3058 212F70D8 212FA3D0 000000FC C5D7C7D4 F0F2C340
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>TT 201F3E08: +00A0  40F0F861 F3F061F2 F2F0F37A F4F27AF3 F6D6C3E7 F3000000 1FCA61D8 1FCA2520
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>TT 201F3E28: +00C0  1FFF4090 1FCA2520 1FFF4090 00000000 1FCA4E80 000000B0 00000000 21257000
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>TT 201F3E48: +00E0  2000C5F8 21257000 2000C1F0 00000000 00000000 00000000 F0F6F0F3 F0F00000
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>TT 201F3E68: +0100  D7C7D4F0 F2C34040 00002000 21257000 21257000 20204C98 201F3440 00000000
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>TT 201F3E88: +0120  00000000 00000000 00000000 00000000 00000000
+  2022-08-30 03:48:28 TT>> TTTRUN10 >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM2RCUR >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S2>> SIM2RCUR V5NUMENT AHI IPCB_NumEnts not found
+  2022-08-30 03:48:28 S2>> SIM2RCUR V6A_OFF IPCB_NumEnts offset: 88
+  2022-08-30 03:48:28 S2>> SIM2RCUR >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIMTTRGT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> GET_TARGET >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> OBJ0CROB >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> OB_CREATOR >>>TO>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1INIT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1INIT >>>TR>>>EXIT RC = 00000000
+ ---TARGET---entry
+ module: PGM02C  , csect: PGM02C, entry: PGM02C#C
+ ---TARGETcxx---entry
+ ---TARGETcxx---exit
+ ---TARGET---exit newTARGET: 213B6028
+  2022-08-30 03:48:28 ST>> OB_CREATOR >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> OBJ0CROB >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> GET_TARGET >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> SIMTTRGT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIMTCALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> TARGET_CALL >>>TO>>>ENTRY --->
+ ---TARGCALL---entry newTARGET: 213B6028
+ ---T addTargetCall---entry
+ ---CC targetCall---entry
+ CC AV ptr: 0
+ CC AVb ptr: 0
+ ---CC targetCall---exit
+ ---CC targetCall---entry
+ CC AV ptr: 0
+ CC AVb ptr: 0
+ ---CC targetCall---exit
+ ---~targetCall---entry
+ ---~targetCall---exit
+ ---addTargetCall---entry
+ AV ptr: 0
+ AVb ptr: 0
+ ---addTargetCall---exit
+ ---T addTargetCall---exit
+ ---~targetCall---entry
+ ---~targetCall---exit
+ ---TARGCALL---exit
+  2022-08-30 03:48:28 ST>> TARGET_CALL >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> SIMTCALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM4INIT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1INIT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1INIT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CRCL >>>TR>>>ENTRY --->
+ 
+  2022-08-30 03:48:28 S4>> OBJ0CRCL CREATE
+ +CREATE                              Length:00000100
+ 1FAFB818 000000  A7F4004E 53000000 1FAFB8B4 E3E3E340  *x4.+........TTT *
+01FAFB828 000010  404040C3 E2C5C3E3 40404040 4040E37C  *   CSECT      T@*
+01FAFB838 000020  E2E4C2D7 C7D440E5 60F0F040 D960F1F7  *SUBPGM V-00 R-17*
+01FAFB848 000030  F0F2F0F0 40F2F4D5 D6E5F2F1 40D7E3C6  *0200 24NOV21 PTF*
+01FAFB858 000040  40F2F4F2 F0F5F100 0040F1F4 4BF5F900  * 242051.. 14.59.*
+01FAFB868 000050  00000000 00000000 404DC35D 40C3D6D7  *........ (C) COP*
+01FAFB878 000060  E8D9C9C7 C8E340F2 F0F1F76B 40F2F0F2  *YRIGHT 2017, 202*
+01FAFB888 000070  F140C3D6 D4D7E4E6 C1D9C540 C3D6D9D7  *1 COMPUWARE CORP*
+01FAFB898 000080  D6D9C1E3 C9D6D540 40404040 40404040  *ORATION         *
+01FAFB8A8 000090  40404040 40404040 40400000 00000040  *          ..... *
+01FAFB8B8 0000A0  00000058 1FB05C60 1FB05CF8 00000000  *......*-..*8....*
+01FAFB8C8 0000B0  90ECD00C 1821C0C0 0000036D 5800C030  *..}...{{..._..{.*
+01FAFB8D8 0000C0  58F0C034 58E00010 58EE0304 58EE00A0  *.0{..\..........*
+01FAFB8E8 0000D0  B218E000 12FFA774 033E1211 A784033B  *..\...x.....xd..*
+01FAFB8F8 0000E0  18E11BFF 18014110 00E80E0E 50E0D008  *.........Y..&\}.*
+01FAFB908 0000F0  50D0E004 18DE5810 D004D203 D0481048  *&}\.....}.K.}...*
+0 2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> CL_CREATOR >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> CL_CREATOR >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CRCL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> SIM4INIT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM4STUB >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> SIM4STUB STUB name:  PGM02D
+ ---BNDHOOK---entry
+ --->>>modName = PGM02C  , csectName = PGM02C, vName = PGM02D, offset = 00000000
+ ---openW_includeName---entry
+ --->>>moduleName = PGM02C
+  openW: rc = 0, rs = <0X00000000>.
+  includeName: rc = 0, rs = <0X00000000>.
+ ---openW_includeName---exit
+  getD: rc, count = 37, rs = <0X83000800>.
+ --->>>class_offset: 000005A4
+ --->>>element_offset: 000005A4
+ ---closeW---entry
+  closeW: rc = 0, rs = <0X00000000>
+ ---closeW---exit
+ ---BNDHOOK---exit
+  2022-08-30 03:48:28 S4>> SIM4STUB STATIC Voffset:  X'000005A4', Vaddr: X'212575A4', EPaddr: X'21257978'
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> GET_SUBPGM_BY_NAME >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> OBJ0CROB >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OB_CREATOR >>>TO>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1INIT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1INIT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OB_CREATOR OC_IA flag: 0
+ ---SUBPGM---entry
+ name:   PGM02D, Y
+ token: 00000000, 0;
+ ---SUBPGMcxx---entry
+ token: 00000000, 0
+ assertYN: Y
+ ---SUBPGMcxx---exit
+ ---SUBPGM---exit  newSubPgm: 2147F028
+  2022-08-30 03:48:28 S4>> OB_CREATOR >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CROB >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> GET_SUBPGM_BY_NAME >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> NEW_CALL >>>TO>>>ENTRY --->
+ ---SUBCALL---entry
+ ---addSubCall---entry
+ ---~subCall---entry
+ ---~subCall---exit
+ ---addSubCall---entry
+ token: 00000000, 0
+ ---initAssertFlag---entry
+ ---initAssertFlag---exit
+ ---addSubCall---exit
+ ---addSubCall---exit
+ ---~subCall---entry
+ ---~subCall---exit
+ ---SUBCALL---exit
+  2022-08-30 03:48:28 S4>> NEW_CALL >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> SIM4STUB >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM4STRC >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> ADD_RC >>>TO>>>ENTRY --->
+ ---SUBRC---entry
+ ---addSubRC---entry
+ ---addSubRC---entry
+ rc: 0
+ ---addSubRC---exit
+ ---addSubRC---exit
+ ---SUBRC---exit
+  2022-08-30 03:48:28 S4>> ADD_RC >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> SIM4STRC >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM4ARG >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> ADD_SMART_ARG >>>TO>>>ENTRY --->
+ ---SUBPASS---entry
+ ---addPassedSmartArg---entry
+ PR: B, PT: A
+ ---argVal---entry
+ ---argVal---exit
+ ---argVal---entry
+ ---argVal---exit
+ ---setData---entry
+ PR: B, PT: A
+ cL: 7
+ setting data
+ ---setData---exit
+ ---CC argVal---entry
+ PR: B, PT: A
+ CC argVal exit--- avP ptr: 0
+ ---addAvBefore---entry
+ AvBefore #: 0
+ ---CC argVal---entry
+ PR: B, PT: A
+ CC argVal exit--- avP ptr: 0
+ ---CC argVal---entry
+ PR: B, PT: A
+ CC argVal exit--- avP ptr: 0
+ ---~argVal---entry
+ ---~argVal---exit
+ ---addAvBefore---exit
+ ---~argVal---entry
+ ---~argVal---exit
+ ---setData---entry
+ PR: B, PT: A
+ cL: 7
+ ---setData---exit
+ ---CC argVal---entry
+ PR: B, PT: A
+ CC argVal exit--- avP ptr: 0
+ ---addAvBeforeLive---entry
+ AvBeforeLive #: 0
+ ---CC argVal---entry
+ PR: B, PT: A
+ CC argVal exit--- avP ptr: 0
+ ---CC argVal---entry
+ PR: B, PT: A
+ CC argVal exit--- avP ptr: 0
+ ---~argVal---entry
+ ---~argVal---exit
+ ---addAvBeforeLive---exit
+ ---~argVal---entry
+ ---~argVal---exit
+ ---addPassedSmartArg---exit
+ ---~argVal---entry
+ ---~argVal---exit
+ ---~argVal---entry
+ ---~argVal---exit
+ ---SUBPASS---exit
+  2022-08-30 03:48:28 S4>> ADD_SMART_ARG >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> SIM4ARG >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM4ARG >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> ADD_SMART_ARG >>>TO>>>ENTRY --->
+ ---SUBRETRN---entry
+ ---addReturnedSmartArg---entry
+ PR: B, PT: A
+ ---argVal---entry
+ ---argVal---exit
+ ---setData---entry
+ PR: B, PT: A
+ cL: 7
+ setting data
+ ---setData---exit
+ ---CC argVal---entry
+ PR: B, PT: A
+ CC argVal exit--- avP ptr: 0
+ ---addAvAfter---entry
+ AvAfter #: 0
+ ---CC argVal---entry
+ PR: B, PT: A
+ CC argVal exit--- avP ptr: 0
+ ---CC argVal---entry
+ PR: B, PT: A
+ CC argVal exit--- avP ptr: 0
+ ---~argVal---entry
+ ---~argVal---exit
+ ---addAvAfter---exit
+ ---~argVal---entry
+ ---~argVal---exit
+ ---addReturnedSmartArg---exit
+ ---~argVal---entry
+ ---~argVal---exit
+ ---SUBRETRN---exit
+  2022-08-30 03:48:28 S4>> ADD_SMART_ARG >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> SIM4ARG >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM3INIT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1INIT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1INIT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CRCL >>>TR>>>ENTRY --->
+ 
+  2022-08-30 03:48:28 S3>> OBJ0CRCL CREATE
+ +CREATE                              Length:00000100
+ 1FA223D0 000000  A7F4004E 53000000 1FA2246C E3E3E340  *x4.+.....s.%TTT *
+01FA223E0 000010  404040C3 E2C5C3E3 40404040 4040E37C  *   CSECT      T@*
+01FA223F0 000020  C1C3C3C5 D7E340E5 60F0F040 D960F1F7  *ACCEPT V-00 R-17*
+01FA22400 000030  F0F2F0F0 40F1F5C1 D7D9F2F0 40D7E3C6  *0200 15APR20 PTF*
+01FA22410 000040  40F1F5F8 F1F8F700 0040F1F1 4BF4F000  * 158187.. 11.40.*
+01FA22420 000050  00000000 00000000 404DC35D 40C3D6D7  *........ (C) COP*
+01FA22430 000060  E8D9C9C7 C8E340F2 F0F1F76B F2F0F2F0  *YRIGHT 2017,2020*
+01FA22440 000070  40C3D6D4 D7E4E6C1 D9C540C3 D6D9D7D6  * COMPUWARE CORPO*
+01FA22450 000080  D9C1E3C9 D6D54040 40404040 40404040  *RATION          *
+01FA22460 000090  40404040 40404040 40000000 00000038  *         .......*
+01FA22470 0000A0  0000005C 1FA26138 1FA261A0 00000000  *...*.s/..s/.....*
+01FA22480 0000B0  90ECD00C 1821C0C0 00000341 5800C030  *..}...{{......{.*
+01FA22490 0000C0  58F0C034 58E00010 58EE0304 58EE00A0  *.0{..\..........*
+01FA224A0 0000D0  B218E000 12FFA774 03121211 A784030F  *..\...x.....xd..*
+01FA224B0 0000E0  18E11BFF 18014110 00E80E0E 50E0D008  *.........Y..&\}.*
+01FA224C0 0000F0  50D0E004 18DE5810 D004D203 D0481048  *&}\.....}.K.}...*
+0 2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> CL_CREATOR >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> CL_CREATOR >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CRCL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> SIM3INIT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM3STBA >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> SIM3STBA ACCEPT_stub:  SYSIN
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> GET_ACPT_BY_NAME >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> OBJ0CROB >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OB_CREATOR >>>TO>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1INIT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1INIT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OB_CREATOR >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CROB >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> GET_ACPT_BY_NAME >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> SIM3STBA >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM3STOA >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> ADD_REC >>>TO>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> ADD_REC >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> SIM3STOA >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM3STOA >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> ADD_REC >>>TO>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> ADD_REC >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> SIM3STOA >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM3STOA >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> ADD_REC >>>TO>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> ADD_REC >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> SIM3STOA >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM4DYV4 >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> SIM4DYV4 CEEDSAR1 contents:  X'1FFCB590'
+  2022-08-30 03:48:28 S4>> SIM4DYV4 DC_FLAGv flag:  X'A6'
+  2022-08-30 03:48:28 S4>> SIM4DYV4 DC_Nlnv flag:  X'08'
+  2022-08-30 03:48:28 S4>> SIM4DYV4 CALL4 name:  TTTMSG00
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> IS_SUBPGM_SIM_NAME >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> IS_SUBPGM_SIM_NAME >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> SIM4DYV4 IGZCFCC R1 contents:  X'1FFCB580'
+  2022-08-30 03:48:28 S4>> SIM4DYV4 >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM4DYV4 >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> SIM4DYV4 CEEDSAR1 contents:  X'1FFCB590'
+  2022-08-30 03:48:28 S4>> SIM4DYV4 DC_FLAGv flag:  X'A6'
+  2022-08-30 03:48:28 S4>> SIM4DYV4 DC_Nlnv flag:  X'08'
+  2022-08-30 03:48:28 S4>> SIM4DYV4 CALL4 name:  TTTMSG00
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> IS_SUBPGM_SIM_NAME >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> IS_SUBPGM_SIM_NAME >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> SIM4DYV4 IGZCFCC R1 contents:  X'1FFCB580'
+  2022-08-30 03:48:28 S4>> SIM4DYV4 >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM4DYV4 >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> SIM4DYV4 CEEDSAR1 contents:  X'1FFCB590'
+  2022-08-30 03:48:28 S4>> SIM4DYV4 DC_FLAGv flag:  X'A6'
+  2022-08-30 03:48:28 S4>> SIM4DYV4 DC_Nlnv flag:  X'08'
+  2022-08-30 03:48:28 S4>> SIM4DYV4 CALL4 name:  TTTMSG00
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> IS_SUBPGM_SIM_NAME >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> IS_SUBPGM_SIM_NAME >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> SIM4DYV4 IGZCFCC R1 contents:  X'1FFCB580'
+  2022-08-30 03:48:28 S4>> SIM4DYV4 >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM4DYV4 >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> SIM4DYV4 CEEDSAR1 contents:  X'1FFCB590'
+  2022-08-30 03:48:28 S4>> SIM4DYV4 DC_FLAGv flag:  X'A6'
+  2022-08-30 03:48:28 S4>> SIM4DYV4 DC_Nlnv flag:  X'08'
+  2022-08-30 03:48:28 S4>> SIM4DYV4 CALL4 name:  TTTMSG00
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> IS_SUBPGM_SIM_NAME >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> IS_SUBPGM_SIM_NAME >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> SIM4DYV4 IGZCFCC R1 contents:  X'1FFCB580'
+  2022-08-30 03:48:28 S4>> SIM4DYV4 >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM3ACV5 >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> SIM3ACV5 ACCEPTV5 -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S3>> SIM3ACV5 ACCEPTV5 1FFCEE38: +0000  00000004 2147F2A8 00000002
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> IS_ACPT_SIMULATED >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> IS_ACPT_SIMULATED >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> ACCEPT_DATA >>>TO>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> ACCEPT_DATA >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> SIM3ACV5 >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM3ACV5 >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> SIM3ACV5 ACCEPTV5 -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S3>> SIM3ACV5 ACCEPTV5 1FFCEE38: +0000  00000004 2147F2AA 00000002
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> IS_ACPT_SIMULATED >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> IS_ACPT_SIMULATED >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> ACCEPT_DATA >>>TO>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> ACCEPT_DATA >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> SIM3ACV5 >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM3ACV5 >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> SIM3ACV5 ACCEPTV5 -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S3>> SIM3ACV5 ACCEPTV5 1FFCEE38: +0000  00000004 2147F2AC 00000003
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> IS_ACPT_SIMULATED >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> IS_ACPT_SIMULATED >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> ACCEPT_DATA >>>TO>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> ACCEPT_DATA >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> SIM3ACV5 >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM4STTC >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> IS_SUBPGM_SIM_OFST >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> IS_SUBPGM_SIM_OFST AT_ENTRY $ISO_OFFSET:  X'000001EE'
+  2022-08-30 03:48:28 S4>> XLSOSTMT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> XLSXTRCT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> XLSXTRCT XX_COLD -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S4>> XLSXTRCT XX_COLD 20204AA0: +0000  00000003 00000012 0000005A 0000005A 00000019 0000005A 00000019 00000018
+  2022-08-30 03:48:28 S4>> XLSXTRCT XX_COLD 20204AC0: +0020  0000000B 00000012 00000040 0000004F 00000060 00000032 00000004 0000002C
+  2022-08-30 03:48:28 S4>> XLSXTRCT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> XLSOSTMT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> XLSCALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> XLSCALL XLS_STMT -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S4>> XLSCALL XLS_STMT 2125BE14: +0000  A00704C8 0000000F 000001CE 00010024 00000000 FFFFFFFF FFFFFFFF 0000000F
+  2022-08-30 03:48:28 S4>> XLSCALL XLS_STMT 2125BE34: +0020  00000010 000000B5 000000B6 00270400 111B0000 40404040 40404040 404040C3
+  2022-08-30 03:48:28 S4>> XLSCALL XLS_STMT 2125BE54: +0040  C1D3D340 7DD7C7D4 F0F2C47D 40E4E2C9 D5C740E6 E260E5C1
+  2022-08-30 03:48:28 S4>> XLSCALL XLS_LIN1 -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S4>> XLSCALL XLS_LIN1 2125BE53: +0000  C3C1D3D3 407DD7C7 D4F0F2C4 7D40E4E2 C9D5C740 E6E260E5 C1D9E24B 00000000
+  2022-08-30 03:48:28 S4>> XLSCALL XLS_LIN1 2125BE73: +0020  00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+  2022-08-30 03:48:28 S4>> XLSCALL XLS_LIN1 2125BE93: +0040  00000000
+  2022-08-30 03:48:28 S4>> XLSCALL NAME_LENGTH PGM02D' , 6
+  2022-08-30 03:48:28 S4>> XLSCALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> IS_SUBPGM_SIM_OFST >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> DO_CALL >>>TO>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> DO_CALL CALLING_STUB name:  PGM02D
+  2022-08-30 03:48:28 S4>> DO_CALL DC_IA flag: 0
+ ---DOSBCALL---entry
+ parmlist: X'1FFCEE38'
+ ---doCall---entry
+ parmlist: X'1FFCEE38'
+ ---nextSubCallTemp---entry
+ stubbedCalls: 1, callTemp: 0
+ acS: 1, acL: 1
+ ---nextSubCallTemp---exit: 0
+ ---storeXSTsBeforeLive---entry
+ ---storeXSTsBeforeLive---exit
+ ---storeAVsBeforeLive---entry
+ ---storeAvBeforeLive---entry
+ sz: 0
+ ---storeAvBeforeLive---exit
+ ---storeAVsBeforeLive---exit
+ ---copyAVsAfter---entry
+ ---copyAvAfter---entry
+ sz: 0
+ PR: B, PT: A
+ is PR: B
+ ---copyAvAfter---exit
+ ---copyAVsAfter---exit
+ ---copyPCBsAfter---entry
+ ---copyPCBsAfter---exit
+ ---copyXSTsAfter---entry
+ ---copyXSTsAfter---exit
+ ---doCall---exit: 0
+ ---DOSBCALL---exit: 0
+  2022-08-30 03:48:28 S4>> DO_CALL >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> SIM4STTC STTC_RCh R15 high:  X'00000000'
+  2022-08-30 03:48:28 S4>> SIM4STTC STTC_RCl R15 low :  X'00000000'
+  2022-08-30 03:48:28 S4>> SIM4STTC >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM2TRV4 >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4SAVE -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4SAVE 1FFCED48: +0000  00110301 1FFCB030 20204B50 A125725E 1FB554F8 00000019 1FFCEE38 1FFCEE2C
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4SAVE 1FFCED68: +0020  21257590 1FFCED48 1FFCED48 0003F0A0 1FFF4090 1FFEDCC0 2147F210 21257024
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4SAVE 1FFCED88: +0040  1FFCB580 1FCA61D8
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4COBP -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4COBP 1FB554F8: +0000  A7F40004 E3E3E35C 90ECD00C 1821C0C0 00000669 5800C078 58F0C07C 58E0
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4SAVE -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4SAVE 1FFCB030: +0000  00104001 1FCA6C80 212FA218 9FA1330A 21257000 1FFCDC90 1FFCB580 1FFCD030
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4SAVE 1FFCB050: +0020  20002038 00000000 1FA01174 2000C0C0 00000000 20007308 1FFFC038 20006038
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4SAVE 1FFCB070: +0040  1FA0208C 1FCA61D8
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4COBP -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4COBP 21257000: +0000  47F0F014 01C3C5C5 000001B8 000006F0 47F0F001 90ECD00C 41A0F024 98EF
+  2022-08-30 03:48:28 S2>> SIM2TRV4 T4DECNUM IPCB_DecNum value : 1
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4_EPN -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4_EPN 00000000: +0000  000A0000 000130E1 00000000 00000000
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4SAVE -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4SAVE 1FCA6C80: +0000  00000000 00006F60 00000000 9FFC9BD0 1FA00000 00000000 1FCA4E80 00000000
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4SAVE 1FCA6CA0: +0020  00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4SAVE 1FCA6CC0: +0040  00000000 1FCA61D8
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4COBP -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4COBP 1FA00000: +0000  47F0F028 00C3C5C5 00003D18 00000014 47F0F001 98CEAC00 1FA000B6 0000
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4_EPN -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4_EPN 1FA000AE: +0000  E3E3E3D9 E4D5D5D9 05000001 1FB56B90
+  2022-08-30 03:48:28 TT>> SIMTRTRV >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> GET_OBJ_FOR_RTRV >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> GET_OBJ_FOR_RTRV >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> DO_A_RETRIEVE >>>TO>>>ENTRY --->
+ ---TGTRTRV---entry
+ ---cxx retrieveNextAV---entry
+ ---C retrieveNextAV---entry
+ sz: 0
+ ---C retrieveNextAV---exit: -10
+ ---cxx retrieveNextAV---exit: -10
+ ---TGTRTRV---exit
+  2022-08-30 03:48:28 ST>> DO_A_RETRIEVE >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> SIMTRTRV >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIMTRTRV >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> GET_OBJ_FOR_RTRV >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> GET_OBJ_FOR_RTRV >>>TC>>>EXIT RC = FFFFFFF6
+  2022-08-30 03:48:28 ST>> OBJ0CALL >>>TR>>>EXIT RC = FFFFFFF6
+  2022-08-30 03:48:28 ST>> SIMTRTRV >>>TR>>>EXIT RC = FFFFFFF6
+  2022-08-30 03:48:28 TT>> SIM4RTRV >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> GET_OBJ_FOR_RTRV >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> GET_OBJ_FOR_RTRV >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> DO_A_RETRIEVE >>>TO>>>ENTRY --->
+ ---DORTRV---entry
+ ---cxx retrieveNextAV---entry
+ ---call retrieveNextAV---entry
+ token: 00000000
+ ---buildAvRec---entry
+ size: 0, index: -1
+ length: 7
+ ---buildAvRec---exit: 10
+ ---call retrieveNextAV---exit: 10
+ ---cxx retrieveNextAV---exit: 10
+ ---DORTRV---exit
+  2022-08-30 03:48:28 S4>> DO_A_RETRIEVE >>>TO>>>EXIT RC = 00000001
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>EXIT RC = 00000001
+  2022-08-30 03:48:28 S4>> SIM4RTRV >>>TR>>>EXIT RC = 00000001
+  2022-08-30 03:48:28 TT>> SIM4RTRV >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> GET_OBJ_FOR_RTRV >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> GET_OBJ_FOR_RTRV >>>TC>>>EXIT RC = FFFFFFF6
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>EXIT RC = FFFFFFF6
+  2022-08-30 03:48:28 S4>> SIM4RTRV >>>TR>>>EXIT RC = FFFFFFF6
+  2022-08-30 03:48:28 TT>> SIMTCAL$ >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> TARGET_CALL_DELETE >>>TO>>>ENTRY --->
+ ---TARGCALX---entry TARGETcxx: 213B6028
+ ---T deleteTargetCall---entry
+ ---~targetCall---entry
+ ---~targetCall---exit
+ ---T deleteTargetCall---exit
+ ---TARGCALX---exit
+  2022-08-30 03:48:28 ST>> TARGET_CALL_DELETE >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> SIMTCAL$ >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIMTTERM >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1TERM >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1TERM >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIMTTERM >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> TTTRUN20 >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 TT>> XLSTERM >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 TT>> XLSTERM >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> TTTRUN20 >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM2TERM >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S2>> STG1TERM >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S2>> STG1TERM >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM2TERM >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM3TERM >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1TERM >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1TERM >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM3TERM >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM4TERM >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1TERM >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1TERM >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM4TERM >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIMTINIT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1INIT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1INIT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> OBJ0CRCL >>>TR>>>ENTRY --->
+ 
+  2022-08-30 03:48:28 ST>> OBJ0CRCL CREATE
+ +CREATE                              Length:00000100
+ 1FB21F00 000000  A7F4004E 53000000 1FB21F9C E3E3E340  *x4.+........TTT *
+01FB21F10 000010  404040C3 E2C5C3E3 40404040 4040E37C  *   CSECT      T@*
+01FB21F20 000020  E3C1D9C7 C5E340E5 60F0F040 D960F1F7  *TARGET V-00 R-17*
+01FB21F30 000030  F0F2F0F0 40F1F4C4 C5C3F2F1 40D7E3C6  *0200 14DEC21 PTF*
+01FB21F40 000040  40F2F3F9 F5F9F600 0040F1F0 4BF2F400  * 239596.. 10.24.*
+01FB21F50 000050  00000000 00000000 404DC35D 40C3D6D7  *........ (C) COP*
+01FB21F60 000060  E8D9C9C7 C8E340F2 F0F1F76B 40F2F0F2  *YRIGHT 2017, 202*
+01FB21F70 000070  F140C3D6 D4D7E4E6 C1D9C540 C3D6D9D7  *1 COMPUWARE CORP*
+01FB21F80 000080  D6D9C1E3 C9D6D540 40404040 40404040  *ORATION         *
+01FB21F90 000090  40404040 40404040 40400000 0000003C  *          ......*
+01FB21FA0 0000A0  00000041 1FB29D40 1FB29DA8 00000000  *....... ...y....*
+01FB21FB0 0000B0  90ECD00C 1821C0C0 0000036D 5800C030  *..}...{{..._..{.*
+01FB21FC0 0000C0  58F0C034 58E00010 58EE0304 58EE00A0  *.0{..\..........*
+01FB21FD0 0000D0  B218E000 12FFA774 033E1211 A784033B  *..\...x.....xd..*
+01FB21FE0 0000E0  18E11BFF 18014110 00E80E0E 50E0D008  *.........Y..&\}.*
+01FB21FF0 0000F0  50D0E004 18DE5810 D004D203 D0481048  *&}\.....}.K.}...*
+0 2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> CL_CREATOR >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> CL_CREATOR >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> OBJ0CRCL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> SIMTINIT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM2INIT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S2>> STG1INIT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S2>> STG1INIT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S2>> SIM2INIT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> TTTRUN10 >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 TT>> TTTRUN10 @EP#1 -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 TT>> TTTRUN10 @EP#1 2125A048: +0000  47F0F04E 00C3C5C5 00000000 00000014 47F0F001 14CEC000 2125A080 00000000
+  2022-08-30 03:48:28 TT>> TTTRUN10 @EP#1 2125A068: +0020  00000000 00000000 000E6D6D 86846D7C D7C7D4F0 F2C34040 0F000001 21258808
+  2022-08-30 03:48:28 TT>> TTTRUN10 @EP#1 2125A088: +0040  00000000 00000000 A1257000 00000DF0 180F58FF 002007FF A1257000 1FFEDCB0
+  2022-08-30 03:48:28 TT>> TTTRUN10 @EP#1 2125A0A8: +0060  1FDE74E8 FFFFFFFF 00000000 2125A098 9FCF49FC 00110301 00104001 00000000
+  2022-08-30 03:48:28 TT>> TTTRUN10 @EP#1 2125A0C8: +0080  20203290 00000000 00000000 202032C4 00000000 00000000 C5D5C4D4 C2D3D260
+  2022-08-30 03:48:28 TT>> TTTRUN10 @EP#1 2125A0E8: +00A0  00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+  2022-08-30 03:48:28 TT>> TTTRUN10 @EP#4 -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 TT>> TTTRUN10 @EP#4 21257000: +0000  47F0F014 01C3C5C5 000001B8 000006F0 47F0F001 90ECD00C 41A0F024 98EFF034
+  2022-08-30 03:48:28 TT>> TTTRUN10 @EP#4 21257020: +0020  47F0F020 21257000 0000009F 21257894 21257730 2125705C 21258300 21257024
+  2022-08-30 03:48:28 TT>> TTTRUN10 @LP#temp -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 TT>> TTTRUN10 @LP#temp 2125C000: +0000  47F0F014 01C3C5C5 000001B8 000006F0 47F0F001 90ECD00C 41A0F024 98EFF034
+  2022-08-30 03:48:28 TT>> TTTRUN10 @LP#temp 2125C020: +0020  47F0F020 2125C000 0000009F 2125C894 2125C730 2125C05C 2125D300 2125C024
+  2022-08-30 03:48:28 TT>> TTTRUN10 @LP#real -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 TT>> TTTRUN10 @LP#real 21257000: +0000  47F0F014 01C3C5C5 000001B8 000006F0 47F0F001 90ECD00C 41A0F024 98EFF034
+  2022-08-30 03:48:28 TT>> TTTRUN10 @LP#real 21257020: +0020  47F0F020 21257000 0000009F 21257894 21257730 2125705C 21258300 21257024
+ ---BNDTARGT---entry
+ --->>>modName = PGM02C  , epName = PGM02C
+ ---openW_includeName---entry
+ --->>>moduleName = PGM02C
+  openW: rc = 0, rs = <0X00000000>.
+  includeName: rc = 0, rs = <0X00000000>.
+ ---openW_includeName---exit
+  getE: rc, count = 3, rs = <0X83000800>.
+ ---closeW---entry
+  closeW: rc = 0, rs = <0X00000000>
+ ---closeW---exit
+ ---BNDTARGT---exit
+  2022-08-30 03:48:28 TT>> TTTRUN10 BNDTARGT RC = X'00000000', OFFSET = X'00000000'
+  2022-08-30 03:48:28 TT>> TTTRUN10 @CSECT -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 TT>> TTTRUN10 @CSECT 21257000: +0000  47F0F014 01C3C5C5 000001B8 000006F0 47F0F001 90ECD00C 41A0F024 98EFF034
+  2022-08-30 03:48:28 TT>> TTTRUN10 @CSECT 21257020: +0020  47F0F020 21257000 0000009F 21257894 21257730 2125705C 21258300 21257024
+ ---BNDTARGT---entry
+ --->>>modName = PGM02C  , epName = PGM02C#C
+ ---openW_includeName---entry
+ --->>>moduleName = PGM02C
+  openW: rc = 0, rs = <0X00000000>.
+  includeName: rc = 0, rs = <0X00000000>.
+ ---openW_includeName---exit
+  getE: rc, count = 1, rs = <0X83000800>.
+ ---closeW---entry
+  closeW: rc = 0, rs = <0X00000000>
+ ---closeW---exit
+ ---BNDTARGT---exit
+  2022-08-30 03:48:28 TT>> TTTRUN10 BNDALTEP RC = X'00000000', OFFSET = X'00000000'
+  2022-08-30 03:48:28 TT>> TTTRUN10 @ALT_EP -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 TT>> TTTRUN10 @ALT_EP 21257000: +0000  47F0F014 01C3C5C5 000001B8 000006F0 47F0F001 90ECD00C 41A0F024 98EFF034
+  2022-08-30 03:48:28 TT>> TTTRUN10 @ALT_EP 21257020: +0020  47F0F020 21257000 0000009F 21257894 21257730 2125705C 21258300 21257024
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>EP -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>EP 21257000: +0000  47F0F014 01C3C5C5 000001B8 000006F0 47F0F001 90ECD00C 41A0F024 98EFF034
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>EP 21257020: +0020  47F0F020 21257000 0000009F 21257894 21257730 2125705C 21258300 21257024
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>EP 21257040: +0040  000008AC 21257480 00000000 58F0C31C 184E05EF 00000000 A7F40009 18EF4100
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>EP 21257060: +0060  E1B85500 C314A724 FFF35000 E04CC001 00110301 5000E000 50D0E004 18DE4100
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>EP 21257080: +0080  D1585000 D074E54C D0700000 5060D060 5070D068 EB1FD08C 002650C0 D080C030
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>EP 212570A0: +00A0  00000279 5800C1F4 5000D0E0 5810C1F4 58203010 41821000 5080D0DC 4110D158
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>EP 212570C0: +00C0  D7431000 1000E54C D1580007 4100800C 5000D17C 9181805C A7140018 4100800C
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>EP 212570E0: +00E0  5000D0F0 4100D158 5000D0F4 4110D0F0 58F03018 58C0D080 0DEF
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10XL TT_XLS_KEY_NAME: PGM02C  , DATE: 08/30/22, TIME: 03:42:36, CT_VER: 06, F0F6
+ ---ESSCHECK---entry
+ --->>>modName = PGM02C  , csectName = PGM02C
+ ---openW_includeName---entry
+ --->>>moduleName = PGM02C
+  openW: rc = 0, rs = <0X00000000>.
+  includeName: rc = 0, rs = <0X00000000>.
+ ---openW_includeName---exit
+ SLSIDRF2: a0
+ ---closeW---entry
+  closeW: rc = 0, rs = <0X00000000>
+ ---closeW---exit
+ ---ESSCHECK---exit
+  2022-08-30 03:48:28 TT>> XLSINIT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 TT>> XLSINIT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> TTTXLS02 >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 TT>> TTTXLS02 >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> XLSOPEN >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 TT>> XLSOPEN XO_ESS XLS_MODULE_NAME: PGM02C  , XLS_KEY_NAME: PGM02C
+  2022-08-30 03:48:28 TT>> XLSOPEN XO_ES2 DATE: 08/30/22, TIME: 03:42:36
+  2022-08-30 03:48:28 TT>> XLSOPEN >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>TT -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>TT 201F3D68: +0000  E3E36E6E 201F3D68 C3000000 201F3D70 201F3D70 00000000 201F4000 00000000
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>TT 201F3D88: +0020  F1000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>TT 201F3DA8: +0040  00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>TT 201F3DC8: +0060  00000000 00000000 00000000 201F32A0 00000048 201F3030 00000020 00000000
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>TT 201F3DE8: +0080  00000000 A12C1AA0 201F30A8 212F7C00 2125B000 000000FC C5D7C7D4 F0F2C340
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>TT 201F3E08: +00A0  40F0F861 F3F061F2 F2F0F37A F4F27AF3 F6D6C3E7 F3000000 1FCA61D8 1FCA2520
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>TT 201F3E28: +00C0  1FFF4090 1FCA2520 1FFEDCB0 00000000 1FCA4E80 000000B0 00000000 21257000
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>TT 201F3E48: +00E0  2000C5F8 21257000 2000C1F0 00000000 00000000 00000000 F0F6F0F3 F0F00000
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>TT 201F3E68: +0100  D7C7D4F0 F2C34040 00002000 21257000 21257000 20204C98 201F3440 00000000
+  2022-08-30 03:48:28 TT>> TTTRUN10 RUN10>TT 201F3E88: +0120  00000000 00000000 00000000 00000000 00000000
+  2022-08-30 03:48:28 TT>> TTTRUN10 >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM2RCUR >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S2>> SIM2RCUR V5NUMENT AHI IPCB_NumEnts not found
+  2022-08-30 03:48:28 S2>> SIM2RCUR V6A_OFF IPCB_NumEnts offset: 88
+  2022-08-30 03:48:28 S2>> SIM2RCUR >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIMTTRGT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> GET_TARGET >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> OBJ0CROB >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> OB_CREATOR >>>TO>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1INIT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1INIT >>>TR>>>EXIT RC = 00000000
+ ---TARGET---entry
+ module: PGM02C  , csect: PGM02C, entry: PGM02C#C
+ ---TARGETcxx---entry
+ ---TARGETcxx---exit
+ ---TARGET---exit newTARGET: 2147F2E8
+  2022-08-30 03:48:28 ST>> OB_CREATOR >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> OBJ0CROB >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> GET_TARGET >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> SIMTTRGT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIMTCALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> TARGET_CALL >>>TO>>>ENTRY --->
+ ---TARGCALL---entry newTARGET: 2147F2E8
+ ---T addTargetCall---entry
+ ---CC targetCall---entry
+ CC AV ptr: 0
+ CC AVb ptr: 0
+ ---CC targetCall---exit
+ ---CC targetCall---entry
+ CC AV ptr: 0
+ CC AVb ptr: 0
+ ---CC targetCall---exit
+ ---~targetCall---entry
+ ---~targetCall---exit
+ ---addTargetCall---entry
+ AV ptr: 0
+ AVb ptr: 0
+ ---addTargetCall---exit
+ ---T addTargetCall---exit
+ ---~targetCall---entry
+ ---~targetCall---exit
+ ---TARGCALL---exit
+  2022-08-30 03:48:28 ST>> TARGET_CALL >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> SIMTCALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM4INIT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1INIT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1INIT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CRCL >>>TR>>>ENTRY --->
+ 
+  2022-08-30 03:48:28 S4>> OBJ0CRCL CREATE
+ +CREATE                              Length:00000100
+ 1FAFB818 000000  A7F4004E 53000000 1FAFB8B4 E3E3E340  *x4.+........TTT *
+01FAFB828 000010  404040C3 E2C5C3E3 40404040 4040E37C  *   CSECT      T@*
+01FAFB838 000020  E2E4C2D7 C7D440E5 60F0F040 D960F1F7  *SUBPGM V-00 R-17*
+01FAFB848 000030  F0F2F0F0 40F2F4D5 D6E5F2F1 40D7E3C6  *0200 24NOV21 PTF*
+01FAFB858 000040  40F2F4F2 F0F5F100 0040F1F4 4BF5F900  * 242051.. 14.59.*
+01FAFB868 000050  00000000 00000000 404DC35D 40C3D6D7  *........ (C) COP*
+01FAFB878 000060  E8D9C9C7 C8E340F2 F0F1F76B 40F2F0F2  *YRIGHT 2017, 202*
+01FAFB888 000070  F140C3D6 D4D7E4E6 C1D9C540 C3D6D9D7  *1 COMPUWARE CORP*
+01FAFB898 000080  D6D9C1E3 C9D6D540 40404040 40404040  *ORATION         *
+01FAFB8A8 000090  40404040 40404040 40400000 00000040  *          ..... *
+01FAFB8B8 0000A0  00000058 1FB05C60 1FB05CF8 00000000  *......*-..*8....*
+01FAFB8C8 0000B0  90ECD00C 1821C0C0 0000036D 5800C030  *..}...{{..._..{.*
+01FAFB8D8 0000C0  58F0C034 58E00010 58EE0304 58EE00A0  *.0{..\..........*
+01FAFB8E8 0000D0  B218E000 12FFA774 033E1211 A784033B  *..\...x.....xd..*
+01FAFB8F8 0000E0  18E11BFF 18014110 00E80E0E 50E0D008  *.........Y..&\}.*
+01FAFB908 0000F0  50D0E004 18DE5810 D004D203 D0481048  *&}\.....}.K.}...*
+0 2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> CL_CREATOR >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> CL_CREATOR >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CRCL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> SIM4INIT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM4STUB >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> SIM4STUB STUB name:  PGM02D
+ ---BNDHOOK---entry
+ --->>>modName = PGM02C  , csectName = PGM02C, vName = PGM02D, offset = 00000000
+ ---openW_includeName---entry
+ --->>>moduleName = PGM02C
+  openW: rc = 0, rs = <0X00000000>.
+  includeName: rc = 0, rs = <0X00000000>.
+ ---openW_includeName---exit
+  getD: rc, count = 37, rs = <0X83000800>.
+ --->>>class_offset: 000005A4
+ --->>>element_offset: 000005A4
+ ---closeW---entry
+  closeW: rc = 0, rs = <0X00000000>
+ ---closeW---exit
+ ---BNDHOOK---exit
+  2022-08-30 03:48:28 S4>> SIM4STUB STATIC Voffset:  X'000005A4', Vaddr: X'212575A4', EPaddr: X'1FB38410'
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> GET_SUBPGM_BY_NAME >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> OBJ0CROB >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OB_CREATOR >>>TO>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1INIT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1INIT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OB_CREATOR OC_IA flag: 0
+ ---SUBPGM---entry
+ name:   PGM02D, Y
+ token: 00000000, 0;
+ ---SUBPGMcxx---entry
+ token: 00000000, 0
+ assertYN: Y
+ ---SUBPGMcxx---exit
+ ---SUBPGM---exit  newSubPgm: 21447028
+  2022-08-30 03:48:28 S4>> OB_CREATOR >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CROB >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> GET_SUBPGM_BY_NAME >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> NEW_CALL >>>TO>>>ENTRY --->
+ ---SUBCALL---entry
+ ---addSubCall---entry
+ ---~subCall---entry
+ ---~subCall---exit
+ ---addSubCall---entry
+ token: 00000000, 0
+ ---initAssertFlag---entry
+ ---initAssertFlag---exit
+ ---addSubCall---exit
+ ---addSubCall---exit
+ ---~subCall---entry
+ ---~subCall---exit
+ ---SUBCALL---exit
+  2022-08-30 03:48:28 S4>> NEW_CALL >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> SIM4STUB >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM4STRC >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> ADD_RC >>>TO>>>ENTRY --->
+ ---SUBRC---entry
+ ---addSubRC---entry
+ ---addSubRC---entry
+ rc: 0
+ ---addSubRC---exit
+ ---addSubRC---exit
+ ---SUBRC---exit
+  2022-08-30 03:48:28 S4>> ADD_RC >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> SIM4STRC >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM4ARG >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> ADD_SMART_ARG >>>TO>>>ENTRY --->
+ ---SUBPASS---entry
+ ---addPassedSmartArg---entry
+ PR: B, PT: A
+ ---argVal---entry
+ ---argVal---exit
+ ---argVal---entry
+ ---argVal---exit
+ ---setData---entry
+ PR: B, PT: A
+ cL: 7
+ setting data
+ ---setData---exit
+ ---CC argVal---entry
+ PR: B, PT: A
+ CC argVal exit--- avP ptr: 0
+ ---addAvBefore---entry
+ AvBefore #: 0
+ ---CC argVal---entry
+ PR: B, PT: A
+ CC argVal exit--- avP ptr: 0
+ ---CC argVal---entry
+ PR: B, PT: A
+ CC argVal exit--- avP ptr: 0
+ ---~argVal---entry
+ ---~argVal---exit
+ ---addAvBefore---exit
+ ---~argVal---entry
+ ---~argVal---exit
+ ---setData---entry
+ PR: B, PT: A
+ cL: 7
+ ---setData---exit
+ ---CC argVal---entry
+ PR: B, PT: A
+ CC argVal exit--- avP ptr: 0
+ ---addAvBeforeLive---entry
+ AvBeforeLive #: 0
+ ---CC argVal---entry
+ PR: B, PT: A
+ CC argVal exit--- avP ptr: 0
+ ---CC argVal---entry
+ PR: B, PT: A
+ CC argVal exit--- avP ptr: 0
+ ---~argVal---entry
+ ---~argVal---exit
+ ---addAvBeforeLive---exit
+ ---~argVal---entry
+ ---~argVal---exit
+ ---addPassedSmartArg---exit
+ ---~argVal---entry
+ ---~argVal---exit
+ ---~argVal---entry
+ ---~argVal---exit
+ ---SUBPASS---exit
+  2022-08-30 03:48:28 S4>> ADD_SMART_ARG >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> SIM4ARG >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM4ARG >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> ADD_SMART_ARG >>>TO>>>ENTRY --->
+ ---SUBRETRN---entry
+ ---addReturnedSmartArg---entry
+ PR: B, PT: A
+ ---argVal---entry
+ ---argVal---exit
+ ---setData---entry
+ PR: B, PT: A
+ cL: 7
+ setting data
+ ---setData---exit
+ ---CC argVal---entry
+ PR: B, PT: A
+ CC argVal exit--- avP ptr: 0
+ ---addAvAfter---entry
+ AvAfter #: 0
+ ---CC argVal---entry
+ PR: B, PT: A
+ CC argVal exit--- avP ptr: 0
+ ---CC argVal---entry
+ PR: B, PT: A
+ CC argVal exit--- avP ptr: 0
+ ---~argVal---entry
+ ---~argVal---exit
+ ---addAvAfter---exit
+ ---~argVal---entry
+ ---~argVal---exit
+ ---addReturnedSmartArg---exit
+ ---~argVal---entry
+ ---~argVal---exit
+ ---SUBRETRN---exit
+  2022-08-30 03:48:28 S4>> ADD_SMART_ARG >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> SIM4ARG >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM3INIT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1INIT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1INIT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CRCL >>>TR>>>ENTRY --->
+ 
+  2022-08-30 03:48:28 S3>> OBJ0CRCL CREATE
+ +CREATE                              Length:00000100
+ 1FA223D0 000000  A7F4004E 53000000 1FA2246C E3E3E340  *x4.+.....s.%TTT *
+01FA223E0 000010  404040C3 E2C5C3E3 40404040 4040E37C  *   CSECT      T@*
+01FA223F0 000020  C1C3C3C5 D7E340E5 60F0F040 D960F1F7  *ACCEPT V-00 R-17*
+01FA22400 000030  F0F2F0F0 40F1F5C1 D7D9F2F0 40D7E3C6  *0200 15APR20 PTF*
+01FA22410 000040  40F1F5F8 F1F8F700 0040F1F1 4BF4F000  * 158187.. 11.40.*
+01FA22420 000050  00000000 00000000 404DC35D 40C3D6D7  *........ (C) COP*
+01FA22430 000060  E8D9C9C7 C8E340F2 F0F1F76B F2F0F2F0  *YRIGHT 2017,2020*
+01FA22440 000070  40C3D6D4 D7E4E6C1 D9C540C3 D6D9D7D6  * COMPUWARE CORPO*
+01FA22450 000080  D9C1E3C9 D6D54040 40404040 40404040  *RATION          *
+01FA22460 000090  40404040 40404040 40000000 00000038  *         .......*
+01FA22470 0000A0  0000005C 1FA26138 1FA261A0 00000000  *...*.s/..s/.....*
+01FA22480 0000B0  90ECD00C 1821C0C0 00000341 5800C030  *..}...{{......{.*
+01FA22490 0000C0  58F0C034 58E00010 58EE0304 58EE00A0  *.0{..\..........*
+01FA224A0 0000D0  B218E000 12FFA774 03121211 A784030F  *..\...x.....xd..*
+01FA224B0 0000E0  18E11BFF 18014110 00E80E0E 50E0D008  *.........Y..&\}.*
+01FA224C0 0000F0  50D0E004 18DE5810 D004D203 D0481048  *&}\.....}.K.}...*
+0 2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> CL_CREATOR >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> CL_CREATOR >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CRCL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> SIM3INIT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM3STBA >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> SIM3STBA ACCEPT_stub:  SYSIN
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> GET_ACPT_BY_NAME >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> OBJ0CROB >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OB_CREATOR >>>TO>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1INIT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1INIT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OB_CREATOR >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CROB >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> GET_ACPT_BY_NAME >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> SIM3STBA >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM3STOA >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> ADD_REC >>>TO>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> ADD_REC >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> SIM3STOA >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM3STOA >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> ADD_REC >>>TO>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> ADD_REC >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> SIM3STOA >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM3STOA >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> ADD_REC >>>TO>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1GET >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> ADD_REC >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> SIM3STOA >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM4DYV4 >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> SIM4DYV4 CEEDSAR1 contents:  X'1FFCB590'
+  2022-08-30 03:48:28 S4>> SIM4DYV4 DC_FLAGv flag:  X'A6'
+  2022-08-30 03:48:28 S4>> SIM4DYV4 DC_Nlnv flag:  X'08'
+  2022-08-30 03:48:28 S4>> SIM4DYV4 CALL4 name:  TTTMSG00
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> IS_SUBPGM_SIM_NAME >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> IS_SUBPGM_SIM_NAME >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> SIM4DYV4 IGZCFCC R1 contents:  X'1FFCB580'
+  2022-08-30 03:48:28 S4>> SIM4DYV4 >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM4DYV4 >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> SIM4DYV4 CEEDSAR1 contents:  X'1FFCB590'
+  2022-08-30 03:48:28 S4>> SIM4DYV4 DC_FLAGv flag:  X'A6'
+  2022-08-30 03:48:28 S4>> SIM4DYV4 DC_Nlnv flag:  X'08'
+  2022-08-30 03:48:28 S4>> SIM4DYV4 CALL4 name:  TTTMSG00
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> IS_SUBPGM_SIM_NAME >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> IS_SUBPGM_SIM_NAME >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> SIM4DYV4 IGZCFCC R1 contents:  X'1FFCB580'
+  2022-08-30 03:48:28 S4>> SIM4DYV4 >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM3ACV5 >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> SIM3ACV5 ACCEPTV5 -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S3>> SIM3ACV5 ACCEPTV5 1FFCEE38: +0000  00000004 2147F2A8 00000002
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> IS_ACPT_SIMULATED >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> IS_ACPT_SIMULATED >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> ACCEPT_DATA >>>TO>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> ACCEPT_DATA >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> SIM3ACV5 >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM3ACV5 >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> SIM3ACV5 ACCEPTV5 -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S3>> SIM3ACV5 ACCEPTV5 1FFCEE38: +0000  00000004 2147F2AA 00000002
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> IS_ACPT_SIMULATED >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> IS_ACPT_SIMULATED >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> ACCEPT_DATA >>>TO>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> ACCEPT_DATA >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> SIM3ACV5 >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM3ACV5 >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> SIM3ACV5 ACCEPTV5 -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S3>> SIM3ACV5 ACCEPTV5 1FFCEE38: +0000  00000004 2147F2AC 00000003
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> IS_ACPT_SIMULATED >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> IS_ACPT_SIMULATED >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> ACCEPT_DATA >>>TO>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> ACCEPT_DATA >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S3>> SIM3ACV5 >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM4STTC >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> IS_SUBPGM_SIM_OFST >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> IS_SUBPGM_SIM_OFST AT_ENTRY $ISO_OFFSET:  X'000001EE'
+  2022-08-30 03:48:28 S4>> XLSOSTMT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> XLSXTRCT >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> XLSXTRCT XX_COLD -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S4>> XLSXTRCT XX_COLD 20204678: +0000  00000003 00000012 0000005A 0000005A 00000019 0000005A 00000019 00000018
+  2022-08-30 03:48:28 S4>> XLSXTRCT XX_COLD 20204698: +0020  0000000B 00000012 00000040 0000004F 00000060 00000032 00000004 0000002C
+  2022-08-30 03:48:28 S4>> XLSXTRCT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> XLSOSTMT >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> XLSCALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> XLSCALL XLS_STMT -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S4>> XLSCALL XLS_STMT 212FA1E4: +0000  A00704C8 0000000F 000001CE 00010024 00000000 FFFFFFFF FFFFFFFF 0000000F
+  2022-08-30 03:48:28 S4>> XLSCALL XLS_STMT 212FA204: +0020  00000010 000000B5 000000B6 00270400 111B0000 40404040 40404040 404040C3
+  2022-08-30 03:48:28 S4>> XLSCALL XLS_STMT 212FA224: +0040  C1D3D340 7DD7C7D4 F0F2C47D 40E4E2C9 D5C740E6 E260E5C1
+  2022-08-30 03:48:28 S4>> XLSCALL XLS_LIN1 -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S4>> XLSCALL XLS_LIN1 212FA223: +0000  C3C1D3D3 407DD7C7 D4F0F2C4 7D40E4E2 C9D5C740 E6E260E5 C1D9E24B 00000000
+  2022-08-30 03:48:28 S4>> XLSCALL XLS_LIN1 212FA243: +0020  00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+  2022-08-30 03:48:28 S4>> XLSCALL XLS_LIN1 212FA263: +0040  00000000
+  2022-08-30 03:48:28 S4>> XLSCALL NAME_LENGTH PGM02D' , 6
+  2022-08-30 03:48:28 S4>> XLSCALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> IS_SUBPGM_SIM_OFST >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> DO_CALL >>>TO>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> DO_CALL CALLING_STUB name:  PGM02D
+  2022-08-30 03:48:28 S4>> DO_CALL DC_IA flag: 0
+ ---DOSBCALL---entry
+ parmlist: X'1FFCEE38'
+ ---doCall---entry
+ parmlist: X'1FFCEE38'
+ ---nextSubCallTemp---entry
+ stubbedCalls: 1, callTemp: 0
+ acS: 1, acL: 1
+ ---nextSubCallTemp---exit: 0
+ ---storeXSTsBeforeLive---entry
+ ---storeXSTsBeforeLive---exit
+ ---storeAVsBeforeLive---entry
+ ---storeAvBeforeLive---entry
+ sz: 0
+ ---storeAvBeforeLive---exit
+ ---storeAVsBeforeLive---exit
+ ---copyAVsAfter---entry
+ ---copyAvAfter---entry
+ sz: 0
+ PR: B, PT: A
+ is PR: B
+ ---copyAvAfter---exit
+ ---copyAVsAfter---exit
+ ---copyPCBsAfter---entry
+ ---copyPCBsAfter---exit
+ ---copyXSTsAfter---entry
+ ---copyXSTsAfter---exit
+ ---doCall---exit: 0
+ ---DOSBCALL---exit: 0
+  2022-08-30 03:48:28 S4>> DO_CALL >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> SIM4STTC STTC_RCh R15 high:  X'00000000'
+  2022-08-30 03:48:28 S4>> SIM4STTC STTC_RCl R15 low :  X'00000000'
+  2022-08-30 03:48:28 S4>> SIM4STTC >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM2TRV4 >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4SAVE -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4SAVE 1FFCED48: +0000  00110301 1FFCB030 20204770 A125725E 1FB554F8 00000019 1FFCEE38 1FFCEE2C
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4SAVE 1FFCED68: +0020  21257590 1FFCED48 7FFFF000 00000000 00000000 1FFEDCC0 2147F210 21257024
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4SAVE 1FFCED88: +0040  1FFCB580 1FCA61D8
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4COBP -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4COBP 1FB554F8: +0000  A7F40004 E3E3E35C 90ECD00C 1821C0C0 00000669 5800C078 58F0C07C 58E0
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4SAVE -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4SAVE 1FFCB030: +0000  00104001 1FCA6C80 2125BE48 9FA1330A A1257000 1FFCDC90 1FFCB580 1FFCD030
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4SAVE 1FFCB050: +0020  20002038 00000000 1FA01174 2000C0C0 00000000 20007308 1FFFC038 20006038
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4SAVE 1FFCB070: +0040  1FA0208C 1FCA61D8
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4COBP -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4COBP 21257000: +0000  47F0F014 01C3C5C5 000001B8 000006F0 47F0F001 90ECD00C 41A0F024 98EF
+  2022-08-30 03:48:28 S2>> SIM2TRV4 T4DECNUM IPCB_DecNum value : 1
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4_EPN -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4_EPN 00000000: +0000  000A0000 000130E1 00000000 00000000
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4SAVE -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4SAVE 1FCA6C80: +0000  00000000 00006F60 00000000 9FFC9BD0 1FA00000 00000000 1FCA4E80 00000000
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4SAVE 1FCA6CA0: +0020  00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4SAVE 1FCA6CC0: +0040  00000000 1FCA61D8
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4COBP -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4COBP 1FA00000: +0000  47F0F028 00C3C5C5 00003D18 00000014 47F0F001 98CEAC00 1FA000B6 0000
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4_EPN -address- -off-  +00      +04      +08      +0C      +10      +14      +18      +1C
+  2022-08-30 03:48:28 S2>> SIM2TRV4 TRV4_EPN 1FA000AE: +0000  E3E3E3D9 E4D5D5D9 05000001 1FB56B90
+  2022-08-30 03:48:28 TT>> SIMTRTRV >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> GET_OBJ_FOR_RTRV >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> GET_OBJ_FOR_RTRV >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> DO_A_RETRIEVE >>>TO>>>ENTRY --->
+ ---TGTRTRV---entry
+ ---cxx retrieveNextAV---entry
+ ---C retrieveNextAV---entry
+ sz: 0
+ ---C retrieveNextAV---exit: -10
+ ---cxx retrieveNextAV---exit: -10
+ ---TGTRTRV---exit
+  2022-08-30 03:48:28 ST>> DO_A_RETRIEVE >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> SIMTRTRV >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIMTRTRV >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> GET_OBJ_FOR_RTRV >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> GET_OBJ_FOR_RTRV >>>TC>>>EXIT RC = FFFFFFF6
+  2022-08-30 03:48:28 ST>> OBJ0CALL >>>TR>>>EXIT RC = FFFFFFF6
+  2022-08-30 03:48:28 ST>> SIMTRTRV >>>TR>>>EXIT RC = FFFFFFF6
+  2022-08-30 03:48:28 TT>> SIM4RTRV >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> GET_OBJ_FOR_RTRV >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> GET_OBJ_FOR_RTRV >>>TC>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> DO_A_RETRIEVE >>>TO>>>ENTRY --->
+ ---DORTRV---entry
+ ---cxx retrieveNextAV---entry
+ ---call retrieveNextAV---entry
+ token: 00000000
+ ---buildAvRec---entry
+ size: 0, index: -1
+ length: 7
+ ---buildAvRec---exit: 10
+ ---call retrieveNextAV---exit: 10
+ ---cxx retrieveNextAV---exit: 10
+ ---DORTRV---exit
+  2022-08-30 03:48:28 S4>> DO_A_RETRIEVE >>>TO>>>EXIT RC = 00000001
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>EXIT RC = 00000001
+  2022-08-30 03:48:28 S4>> SIM4RTRV >>>TR>>>EXIT RC = 00000001
+  2022-08-30 03:48:28 TT>> SIM4RTRV >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> GET_OBJ_FOR_RTRV >>>TC>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> GET_OBJ_FOR_RTRV >>>TC>>>EXIT RC = FFFFFFF6
+  2022-08-30 03:48:28 S4>> OBJ0CALL >>>TR>>>EXIT RC = FFFFFFF6
+  2022-08-30 03:48:28 S4>> SIM4RTRV >>>TR>>>EXIT RC = FFFFFFF6
+  2022-08-30 03:48:28 TT>> SIMTCAL$ >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> OBJ0CALL >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> TARGET_CALL_DELETE >>>TO>>>ENTRY --->
+ ---TARGCALX---entry TARGETcxx: 2147F2E8
+ ---T deleteTargetCall---entry
+ ---~targetCall---entry
+ ---~targetCall---exit
+ ---T deleteTargetCall---exit
+ ---TARGCALX---exit
+  2022-08-30 03:48:28 ST>> TARGET_CALL_DELETE >>>TO>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> OBJ0CALL >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 ST>> SIMTCAL$ >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIMTTERM >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1TERM >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 ST>> STG1TERM >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIMTTERM >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> TTTRUN20 >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 TT>> XLSTERM >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 TT>> XLSTERM >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> TTTRUN20 >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM2TERM >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S2>> STG1TERM >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S2>> STG1TERM >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM2TERM >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM3TERM >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1TERM >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S3>> STG1TERM >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM3TERM >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM4TERM >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1TERM >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 S4>> STG1TERM >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> SIM4TERM >>>TR>>>EXIT RC = 00000000
+  2022-08-30 03:48:28 TT>> TTT@TERM >>>TR>>>ENTRY --->
+ Topaz for Total Test component levels used during this unit test execution:
+ T@ACCEPT   Compile Date: 15APR20   Time: 11.40   Level: 158187
+ T@SUBPGM   Compile Date: 24NOV21   Time: 14.59   Level: 242051
+ T@TARGET   Compile Date: 14DEC21   Time: 10.24   Level: 239596
+ TT#PAIRS   Compile Date: 24NOV21   Time: 14.58   Level: 242051
+ TTT@INIT   Compile Date: 24NOV21   Time: 14.59   Level: 242051
+ TTTINF00   Compile Date: 15APR20   Time: 11.41   Level: 158187
+ TTTOBJ00   Compile Date: 02MAR21   Time: 13.49   Level: 171696
+ TTTRUN00   Compile Date: 14MAR22   Time: 05.19   Level: 163388
+ TTTSIMT0   Compile Date: 14DEC21   Time: 10.24   Level: 239596
+ TTTSIM20   Compile Date: 02JUN22   Time: 08.11   Level: 257421
+ TTTSIM30   Compile Date: 15APR20   Time: 11.43   Level: 158187
+ TTTSIM40   Compile Date: 01MAR22   Time: 07.05   Level: 242051
+ TTTSTG10   Compile Date: 13JUL21   Time: 20.48   Level: 228674
+ TTTXLS01   Compile Date: 26MAY22   Time: 06.10   Level: 164252
+ TTTXLS02   Compile Date: 02FEB21   Time: 16.24   Level: 158187
+ TTBNDR01   Compile Date: 13May20   Time: 10.24   Level: XXXXXX
+ TTDEBUG    Compile Date: 14Mar22   Time: 05.19   Level: XXXXXX
+ TTSUBPGM   Compile Date: 14Dec21   Time: 10.24   Level: XXXXXX
+ TTTARGET   Compile Date: 14Dec21   Time: 10.24   Level: XXXXXX
+ TTTLCHCK   Compile Date: 13May20   Time: 10.23   Level: XXXXXX
+ TTTABNDI   Compile Date: 01Dec20   Time: 10.01   Level: 162805
+ TTTENVC4   Compile Date: 13May20   Time: 10.21   Level: 161051
+ TTTENVC5   Compile Date: 13May20   Time: 10.21   Level: 161051
+ TTTMSG00   Compile Date: 01Mar22   Time: 07.05   Level: 226489
+ TTTRUNNR   Compile Date: 21Mar22   Time: 14.02   Level: 255344
+  2022-08-30 03:48:28 TT>> STG1TERM >>>TR>>>ENTRY --->
+  2022-08-30 03:48:28 TT>> STG1TERM >>>TR>>>EXIT RC = 00000000
+
+05:48:05.222 DEBUG     Popup 173        Setting execution variable 'jobid' to JOB03643
+05:48:05.222 DEBUG     Popup 173        Setting execution variable 'jobname' to IBMUSERA
+05:48:05.222 DEBUG     Popup 173        Setting execution variable 'returncode' to 0000
+05:48:05.222 TRACE     Unittest         Processing binary result file...
+05:48:06.206 TRACE     Unittest         Parsing archive file to get any assertion failures
+05:48:06.206 INFO      Unittest         Execution completed
+05:48:06.206 INFO      Engine           Test Scenario execution ended

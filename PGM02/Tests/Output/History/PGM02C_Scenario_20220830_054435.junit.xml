@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?totaltestVersion 20.9.2.v20220119-0531_125?>
+<!--Topaz for Total Test 20.9.2.v20220119-0531_125 Aug 30, 2022 5:44:35 AM-->
+<testsuites>
+  <testsuite name="PGM02C_Scenario" errors="0" tests="1" failures="1">
+    <testcase classname="PGM02C_Scenario" name="Unit Test: Test Case: PGM02CCase1 for program: PGM02C">
+      <failure>Failure    Stub: PGM02C_PGM02D_01 Record: 00001 Message: Check for WS_Z failed. Actual: 30 Expected: X'F3F040'</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

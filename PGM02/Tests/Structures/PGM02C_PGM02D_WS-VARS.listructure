@@ -1,0 +1,48 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<?totaltestVersion 20.9.2.v20220119-0531_125?>
+<!--Topaz for Total Test 20.9.2.v20220119-0531_125 Aug 30, 2022 5:42:57 AM-->
+<listructure:listructure xmlns:listructure="http://www.compuware.com/model/xml/listructure" xmlns:properties="http://www.compuware.com/model/xml/properties" id="Tests/Structures/PGM02C_PGM02D_WS-VARS.listructure">
+  <listructure:struct id="WS_VARS" name="WS_VARS">
+    <properties:properties>
+      <properties:property name="displayLength" type="number">7</properties:property>
+      <properties:property name="platform" type="string">mainframe</properties:property>
+      <properties:property name="storageLength" type="number">7</properties:property>
+    </properties:properties>
+    <listructure:number id="WS_VARS.WS_X" initial="00" length="2" name="WS_X">
+      <properties:properties>
+        <properties:property name="picture" type="string">9(02)</properties:property>
+        <properties:property name="value">00</properties:property>
+        <properties:property name="displayLength" type="number">2</properties:property>
+        <properties:property name="integerDigits" type="number">2</properties:property>
+        <properties:property name="platform" type="string">mainframe</properties:property>
+        <properties:property name="liType" type="string">zoned</properties:property>
+        <properties:property name="mask" type="string">9(02)</properties:property>
+        <properties:property name="storageLength" type="number">2</properties:property>
+      </properties:properties>
+    </listructure:number>
+    <listructure:number id="WS_VARS.WS_Y" initial="00" length="2" name="WS_Y">
+      <properties:properties>
+        <properties:property name="picture" type="string">9(02)</properties:property>
+        <properties:property name="value">00</properties:property>
+        <properties:property name="displayLength" type="number">2</properties:property>
+        <properties:property name="integerDigits" type="number">2</properties:property>
+        <properties:property name="platform" type="string">mainframe</properties:property>
+        <properties:property name="liType" type="string">zoned</properties:property>
+        <properties:property name="mask" type="string">9(02)</properties:property>
+        <properties:property name="storageLength" type="number">2</properties:property>
+      </properties:properties>
+    </listructure:number>
+    <listructure:number id="WS_VARS.WS_Z" initial="000" length="3" name="WS_Z">
+      <properties:properties>
+        <properties:property name="picture" type="string">9(03)</properties:property>
+        <properties:property name="value">000</properties:property>
+        <properties:property name="displayLength" type="number">3</properties:property>
+        <properties:property name="integerDigits" type="number">3</properties:property>
+        <properties:property name="platform" type="string">mainframe</properties:property>
+        <properties:property name="liType" type="string">zoned</properties:property>
+        <properties:property name="mask" type="string">9(03)</properties:property>
+        <properties:property name="storageLength" type="number">3</properties:property>
+      </properties:properties>
+    </listructure:number>
+  </listructure:struct>
+</listructure:listructure>
