@@ -1,0 +1,18 @@
+<Connections>
+  <Connection>
+    <id>10.10.1.173:16196</id>
+    <ipaddress>10.10.1.173</ipaddress>
+    <port>16196</port>
+    <socketType>HCI</socketType>
+    <databaseUri>jdbc:db2://10.10.1.173:&lt;port&gt;/${database}</databaseUri>
+    <databaseDriver>com.ibm.db2.jcc.DB2Driver</databaseDriver>
+    <databaseName>&lt;database&gt;</databaseName>
+    <description>Popup 173</description>
+    <label>Popup 173</label>
+    <skeletonDir>JCLSkeletons</skeletonDir>
+    <datasethlq />
+    <jclproperties>
+      <property key="lpar_tttrunner_lib" value="SYS1.CPWR.MLCX170.SLCXLOAD" />
+    </jclproperties>
+  </Connection>
+</Connections>
