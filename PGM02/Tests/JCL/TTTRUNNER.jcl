@@ -54,7 +54,7 @@ DEBUG(${runtime.usedebug})
 //*DD1 DD DSN=HLQ.CUSTOM.TEST.LOAD,DISP=SHR
 //SYSPRINT DD SYSOUT=*
 //SYSIN DD *
-10
 20
-30
+20
+40
 //*
